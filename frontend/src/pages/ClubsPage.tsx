@@ -34,15 +34,15 @@ export function ClubsPage() {
     <>
       <PageHeader
         eyebrow="Club directory"
-        title="Twenty clubs. One league."
-        description="Every club has a place, a personality and a reason to support them. Use this directory as your scouting report."
+        title="Premier League clubs"
+        description="Search all 20 clubs by name, city, stadium or trait."
       >
         <label className="search-field search-field--large">
           <Search />
           <span className="sr-only">Search clubs</span>
           <input
             type="search"
-            placeholder="Search by club, city or vibe"
+            placeholder="Search by club, city or trait"
             value={search}
             onChange={(event) => setSearch(event.target.value)}
           />
@@ -70,7 +70,7 @@ export function ClubsPage() {
             </div>
           ) : (
             <EmptyState icon="search" title="No club found">
-              Try a city like “London”, a nickname like “Gunners”, or a vibe like “underdog”.
+              Try a city, nickname or trait.
             </EmptyState>
           )}
 
@@ -78,13 +78,13 @@ export function ClubsPage() {
             <div>
               <span className="eyebrow">
                 <span className="eyebrow__dot" />
-                Still undecided?
+                Club finder
               </span>
-              <h2>Let the club finder do the narrowing.</h2>
-              <p>Five questions about what you enjoy. Three clubs that might fit.</p>
+              <h2>Find a club to support</h2>
+              <p>Answer five questions to get three suggested clubs.</p>
             </div>
             <Link className="btn btn--primary" to="/find-your-club">
-              Find my club
+              Open club finder
               <ArrowRight />
             </Link>
           </div>

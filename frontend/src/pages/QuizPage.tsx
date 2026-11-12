@@ -22,28 +22,10 @@ interface AnswerRecord {
 
 const letters = ['A', 'B', 'C', 'D'];
 
-function resultMessage(percent: number) {
-  if (percent >= 90) {
-    return {
-      title: 'Pundit material.',
-      body: 'You know the rules, the table and the culture. Time to start explaining offside to other people.'
-    };
-  }
-  if (percent >= 70) {
-    return {
-      title: 'A solid midfield performance.',
-      body: 'You have the basics locked down. A couple of guides and you will be dangerous.'
-    };
-  }
-  if (percent >= 50) {
-    return {
-      title: 'You are getting there.',
-      body: 'The shape is right. A few more rules and a matchday or two will make it click.'
-    };
-  }
+function resultMessage() {
   return {
-    title: 'Welcome to football.',
-    body: 'Everyone starts somewhere. You now know more than you did five minutes ago — that counts.'
+    title: 'Quiz complete',
+    body: 'Review every answer below.'
   };
 }
 
@@ -76,7 +58,7 @@ export function QuizPage() {
   const total = questions.length;
   const current = questions[index];
   const percent = total ? Math.round((score / total) * 100) : 0;
-  const message = resultMessage(percent);
+  const message = resultMessage();
   const isLast = index === total - 1;
 
   function startQuiz() {
@@ -137,9 +119,9 @@ export function QuizPage() {
     return (
       <>
         <PageHeader
-          eyebrow="The quiz"
-          title="How much football do you actually know?"
-          description="Ten questions. Instant explanations. No one is keeping score except you — and the personal best in your browser."
+          eyebrow="Quiz"
+          title="Premier League quiz"
+          description="Ten questions with an explanation after each answer."
         />
         <section className="section section--tight section--last">
           <div className="container">
@@ -147,22 +129,19 @@ export function QuizPage() {
               <div className="quiz-intro__copy">
                 <span className="eyebrow eyebrow--light">
                   <span className="eyebrow__dot" />
-                  Five-minute warm-up
+                  Quiz
                 </span>
-                <h2>From offside to goal difference.</h2>
-                <p>
-                  A friendly mix of rules, league mechanics and matchday culture. You will
-                  get the answer and a short explanation after every question.
-                </p>
+                <h2>Rules, league and culture</h2>
+                <p>Each question includes a short explanation.</p>
                 <ul className="quiz-intro__list">
                   <li>
                     <Check /> {total} questions across rules, the league and culture
                   </li>
                   <li>
-                    <Check /> Instant feedback with plain-English explanations
+                    <Check /> Explanation after each answer
                   </li>
                   <li>
-                    <Check /> A full review at the end, so wrong answers still teach you something
+                    <Check /> Full answer review at the end
                   </li>
                 </ul>
                 <button className="btn btn--accent" type="button" onClick={startQuiz}>
@@ -171,16 +150,12 @@ export function QuizPage() {
                 </button>
               </div>
               <div className="quiz-intro__score">
-                <span>{best ? 'Your personal best' : 'The challenge'}</span>
+                <span>{best ? 'Your best' : 'Questions'}</span>
                 <strong>
                   {best ? best.score : total}
                   {best && <small>/{best.total}</small>}
                 </strong>
-                <p>
-                  {best
-                    ? 'Beat it if you can. The questions are friendly, not easy.'
-                    : 'questions · about five minutes · no pressure'}
-                </p>
+                <p>{best ? 'correct answers' : 'about five minutes'}</p>
                 <div className="quiz-intro__badges">
                   <span className="tag tag--soft">Rules</span>
                   <span className="tag tag--soft">The league</span>
@@ -274,7 +249,7 @@ export function QuizPage() {
                   <span className="quiz-feedback__icon">
                     {feedback.correct ? <Check /> : <Close />}
                   </span>
-                  <strong>{feedback.correct ? 'Correct.' : 'Not quite.'}</strong>
+                  <strong>{feedback.correct ? 'Correct.' : 'Incorrect.'}</strong>
                 </div>
                 <p>{feedback.explanation}</p>
                 <button className="btn btn--primary btn--sm" type="button" onClick={nextQuestion}>
@@ -296,7 +271,7 @@ export function QuizPage() {
       <div className="quiz-result">
         <span className="eyebrow">
           <span className="eyebrow__dot" />
-          Full time
+          Results
         </span>
         <div className="score-ring" style={ringStyle}>
           <div className="score-ring__inner">
@@ -312,7 +287,7 @@ export function QuizPage() {
             <ArrowRight />
           </button>
           <Link className="btn btn--ghost" to="/learn">
-            Keep learning
+            All guides
           </Link>
         </div>
         {best && (
@@ -323,11 +298,7 @@ export function QuizPage() {
       </div>
 
       <section className="quiz-review">
-        <SectionHeading
-          eyebrow="The review"
-          title="Every answer, explained"
-          description="Wrong answers are just guides you have not read yet."
-        />
+        <SectionHeading eyebrow="Review" title="Every answer, explained" />
         <div className="review-list">
           {answers.map((answer, answerIndex) => (
             <article

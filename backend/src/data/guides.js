@@ -2,10 +2,10 @@ export const guides = [
   {
     id: 'guide-league',
     slug: 'premier-league-explained',
-    title: 'The Premier League, explained',
+    title: 'Premier League format',
     category: 'The basics',
     summary:
-      'Twenty clubs, thirty-eight matchdays and one very simple points system. Here is the whole league in one guide.',
+      'How the league works: 20 clubs, 38 matches per club, points, goal difference and relegation.',
     readTime: 6,
     difficulty: 'Starter',
     emoji: '🏟️',
@@ -13,7 +13,7 @@ export const guides = [
     featured: true,
     sections: [
       {
-        heading: 'One league, twenty clubs',
+        heading: 'Clubs and matches',
         body:
           'The Premier League is the top division of English men’s football. It has 20 clubs, and every club plays every other club twice — once at home and once away. That makes 38 matches per club and 380 matches across the season.',
         bullets: [
@@ -24,7 +24,7 @@ export const guides = [
         ]
       },
       {
-        heading: 'The table tells the story',
+        heading: 'The table',
         body:
           'The league table is ranked by points first. If two clubs have the same points, goal difference decides who is higher — that is goals scored minus goals conceded. If goal difference is also equal, the tie goes to goals scored, then to head-to-head results.',
         bullets: [
@@ -36,17 +36,17 @@ export const guides = [
       {
         heading: 'There is no play-off for the title',
         body:
-          'Unlike some leagues, the Premier League does not finish with a play-off. The table after 38 matches is final. The three lowest clubs are relegated and replaced by three clubs promoted from the Championship, which is the division below.',
+          'The Premier League does not finish with a play-off. The table after 38 matches is final. The three lowest clubs are relegated and replaced by three clubs promoted from the Championship, which is the division below.',
         bullets: [
           'The Championship promotes two clubs automatically and one via play-offs.',
-          'Relegated clubs lose their Premier League broadcast income — which is why survival matters so much.',
+          'Relegated clubs lose their Premier League broadcast income.',
           'Promoted clubs often spend heavily to try to stay up.'
         ]
       },
       {
         heading: 'The cups are separate competitions',
         body:
-          'The Premier League is only one of the competitions a club plays in. The FA Cup and EFL Cup are knockout tournaments, and the best clubs also play in European competitions. Winning a cup does not change your league position — it is a separate trophy.',
+          'The Premier League is one of several competitions a club plays in. The FA Cup and EFL Cup are knockout tournaments, and the best clubs also play in European competitions. Winning a cup does not change your league position.',
         bullets: [
           'FA Cup: the oldest national knockout competition in world football.',
           'EFL Cup: also known as the Carabao Cup, open to clubs in the top four divisions.',
@@ -58,16 +58,16 @@ export const guides = [
       { term: 'Matchday', definition: 'A round of fixtures. A Premier League season has 38 matchdays.' },
       { term: 'Goal difference', definition: 'Goals scored minus goals conceded. Used to split teams on equal points.' },
       { term: 'Relegation', definition: 'Dropping to the division below at the end of the season.' },
-      { term: 'Champions League', definition: 'Europe’s elite club competition, usually offering places to the top four.' }
+      { term: 'Champions League', definition: 'Europe’s top club competition, usually offering places to the top four.' }
     ]
   },
   {
     id: 'guide-offside',
     slug: 'offside-explained',
-    title: 'Offside, without the headache',
+    title: 'Offside rule explained',
     category: 'Rules',
     summary:
-      'The most misunderstood rule in football, broken into three simple questions.',
+      'The offside rule in three checks: position, the moment the ball is played and involvement in play.',
     readTime: 5,
     difficulty: 'Starter',
     emoji: '🚩',
@@ -87,31 +87,31 @@ export const guides = [
       {
         heading: 'Three questions the referee asks',
         body:
-          'Think of offside as a sequence. First: was the player ahead of the second-last opponent when the ball was played? Second: was the player in the opposition half? Third: did they get involved — by playing the ball, interfering with an opponent, or gaining an advantage?',
+          'Offside is a sequence of checks. First: was the player ahead of the second-last opponent when the ball was played? Second: was the player in the opposition half? Third: did they get involved — by playing the ball, interfering with an opponent, or gaining an advantage?',
         bullets: [
           'If the answer to any question is no, there is no offside.',
           'If the player is level with the second-last opponent, they are onside.',
-          'The moment that matters is when the ball is passed — not when it is received.'
+          'The moment that matters is when the ball is passed, not when it is received.'
         ]
       },
       {
         heading: 'Level is onside',
         body:
-          'This is the rule that trips people up most often. If any part of the attacker that can legally score is level with the defender, the attacker is onside. Officials and technology use very fine margins, which is why offside calls can look incredibly close on replay.',
+          'If any part of the attacker that can legally score is level with the defender, the attacker is onside. Officials and technology use very fine margins, so close calls can be difficult to judge on replay.',
         bullets: [
-          '“Level” means level — not “a little bit behind”.',
+          '“Level” means level, not a little bit behind.',
           'Hands and arms are generally not considered for offside position.',
-          'Semi-automated offside technology is gradually being introduced to speed up decisions.'
+          'Semi-automated offside technology is being introduced to speed up decisions.'
         ]
       },
       {
         heading: 'Why the rule exists',
         body:
-          'Without offside, attackers could simply stand next to the goalkeeper and wait for long passes. The rule keeps the game stretched, rewards timing and movement, and gives defenders a reason to hold a line. It is imperfect, but it is fundamental.',
+          'Without offside, attackers could stand next to the goalkeeper and wait for long passes. The rule keeps the game stretched, rewards timing and movement, and gives defenders a reason to hold a line.',
         bullets: [
           'Strikers practise timing runs to stay onside.',
           'Defenders practise stepping up together to catch attackers offside.',
-          'A well-timed run in behind is one of the most exciting things in the sport.'
+          'A timed run in behind the defence is a common attacking move.'
         ]
       }
     ],
@@ -124,10 +124,10 @@ export const guides = [
   {
     id: 'guide-var',
     slug: 'var-explained',
-    title: 'VAR: what it can and cannot do',
+    title: 'VAR explained',
     category: 'Rules',
     summary:
-      'Video review was meant to remove obvious mistakes. Here is how it actually works — and why it still causes arguments.',
+      'What VAR can review, how a review works and why decisions can take time.',
     readTime: 5,
     difficulty: 'Getting there',
     emoji: '📺',
@@ -137,17 +137,17 @@ export const guides = [
       {
         heading: 'What VAR is',
         body:
-          'VAR stands for Video Assistant Referee. A team of officials watches the match from a video room and can advise the on-field referee when there has been a clear error or a missed serious incident. The on-field referee still makes the final decision.',
+          'VAR stands for Video Assistant Referee. A team of officials watches the match from a video room and can advise the on-field referee when there has been a clear error or a missed serious incident. The on-field referee makes the final decision.',
         bullets: [
           'VAR does not review every decision.',
           'It only intervenes for specific, game-changing situations.',
-          'The threshold is high: “clear and obvious error” or “serious missed incident”.'
+          'The threshold is a “clear and obvious error” or a “serious missed incident”.'
         ]
       },
       {
         heading: 'The four reviewable categories',
         body:
-          'VAR can only get involved in four areas. If an incident does not fit one of these categories, VAR cannot step in — even if the decision looks wrong.',
+          'VAR can only get involved in four areas. If an incident does not fit one of these categories, VAR cannot step in, even if the decision looks wrong.',
         bullets: [
           'Goals: was there an offence in the build-up, or was the ball out of play?',
           'Penalties: was a foul inside the area, or was the wrong decision given?',
@@ -162,17 +162,17 @@ export const guides = [
         bullets: [
           'Factual: offside, ball out of play, goal-line technology.',
           'Subjective: fouls, handball, red-card severity.',
-          'The final call always belongs to the referee.'
+          'The final call belongs to the referee.'
         ]
       },
       {
-        heading: 'Why decisions still feel slow',
+        heading: 'Why reviews take time',
         body:
-          'Checking multiple camera angles, identifying the exact moment of contact and applying the offside law can take time. Broadcasters often show replays before the officials have finished. The result is a strange experience: everyone in the stadium waits while a decision is made somewhere else.',
+          'Checking multiple camera angles, identifying the exact moment of contact and applying the offside law can take time. Broadcasters often show replays before the officials have finished, so supporters in the stadium may wait without an explanation.',
         bullets: [
           'Semi-automated offside uses tracking technology to speed up line-drawing.',
           'Supporters often criticise the lack of in-stadium communication.',
-          'The rules are reviewed regularly, but the “clear and obvious” bar remains controversial.'
+          'The “clear and obvious” threshold is a frequent subject of debate.'
         ]
       }
     ],
@@ -188,7 +188,7 @@ export const guides = [
     title: 'Cards, fouls and penalties',
     category: 'Rules',
     summary:
-      'What the referee is actually doing when the whistle goes — and what yellow and red cards mean.',
+      'Fouls, free kicks, yellow and red cards, and how penalty kicks work.',
     readTime: 4,
     difficulty: 'Starter',
     emoji: '🟨',
@@ -208,11 +208,11 @@ export const guides = [
       {
         heading: 'Yellow cards',
         body:
-          'A yellow card is a formal warning. It is shown for things like a reckless foul, delaying the restart, dissent or a deliberate tactical foul. Two yellow cards in the same match mean a red card and the player leaves the pitch.',
+          'A yellow card is a formal warning. It is shown for a reckless foul, delaying the restart, dissent or a deliberate tactical foul. Two yellow cards in the same match mean a red card and the player leaves the pitch.',
         bullets: [
           'Yellow cards accumulate across matches and can lead to suspension.',
-          'A second yellow is shown as a red card — the player is off.',
-          'The referee must still manage the game; not every foul is a yellow.'
+          'A second yellow is shown as a red card, and the player is off.',
+          'Not every foul is a yellow card.'
         ]
       },
       {
@@ -232,7 +232,7 @@ export const guides = [
         bullets: [
           'A penalty is a free shot with only the goalkeeper to beat.',
           'Encroachment by other players can lead to a re-take.',
-          'Penalties are a huge momentum swing — and a very specific kind of pressure.'
+          'A penalty is taken from 12 yards.'
         ]
       }
     ],
@@ -245,10 +245,10 @@ export const guides = [
   {
     id: 'guide-matchday',
     slug: 'matchday-basics',
-    title: 'Your first matchday, decoded',
+    title: 'Matchday basics',
     category: 'Matchday',
     summary:
-      'Ninety minutes, stoppage time, substitutions and the scoreboard — everything you need to follow a game.',
+      'Match length, stoppage time, substitutions, home and away, and how to read the scoreboard.',
     readTime: 4,
     difficulty: 'Starter',
     emoji: '⏱️',
@@ -256,9 +256,9 @@ export const guides = [
     featured: true,
     sections: [
       {
-        heading: 'The clock is not the whole story',
+        heading: 'The clock',
         body:
-          'A match is two 45-minute halves. The clock keeps running when the ball goes out of play, and the referee adds stoppage time at the end of each half to account for injuries, substitutions and delays. So “90 minutes” usually means 94 or 95 minutes of real time.',
+          'A match is two 45-minute halves. The clock keeps running when the ball goes out of play, and the referee adds stoppage time at the end of each half for injuries, substitutions and delays. A match usually lasts around 94 to 95 minutes of real time.',
         bullets: [
           'Half-time is a 15-minute break.',
           'Stoppage time is shown on the fourth official’s board.',
@@ -272,13 +272,13 @@ export const guides = [
         bullets: [
           'A substitute cannot re-enter once they have been replaced.',
           'Concussion substitutions are handled separately.',
-          'A red card reduces the team to ten players — substitutions do not replace them.'
+          'A red card reduces the team to ten players; substitutions do not replace them.'
         ]
       },
       {
         heading: 'Home and away',
         body:
-          'The home team plays at their own stadium. The away team travels. Home advantage is real: familiar surroundings, a supportive crowd and no travel usually add up to a small but meaningful edge over a season.',
+          'The home team plays at their own stadium. The away team travels. Home advantage comes from familiar surroundings, a supportive crowd and no travel.',
         bullets: [
           'Home teams generally win more often than away teams.',
           'Away goals are not worth extra points in the league.',
@@ -308,7 +308,7 @@ export const guides = [
     title: 'Transfer windows and deadline day',
     category: 'Beyond the league',
     summary:
-      'Why players can move in January but not March, what a loan actually is, and why “here we go” trends.',
+      'When clubs can sign players, how fees and loans work, and which financial rules apply.',
     readTime: 5,
     difficulty: 'Getting there',
     emoji: '🔁',
@@ -322,7 +322,7 @@ export const guides = [
         bullets: [
           'The summer window usually runs from June to early September.',
           'The January window runs through the month.',
-          'Deadline day is the final day of a window — and a television event in its own right.'
+          'Deadline day is the final day of a window.'
         ]
       },
       {
@@ -336,9 +336,9 @@ export const guides = [
         ]
       },
       {
-        heading: 'Why money is complicated',
+        heading: 'Financial rules',
         body:
-          'Big fees are often paid in instalments, and accounting rules spread the cost across the contract. That is why a £80m signing does not necessarily appear as an £80m hit in one year. Financial rules also limit how much clubs can spend relative to their revenue.',
+          'Big fees are often paid in instalments, and accounting rules spread the cost across the contract. An £80m signing therefore does not necessarily appear as an £80m cost in one year. Financial rules also limit how much clubs can spend relative to their revenue.',
         bullets: [
           'Profit and Sustainability Rules (PSR) limit allowable losses.',
           'Squad cost rules cap spending on wages, fees and agents relative to revenue.',
@@ -346,13 +346,13 @@ export const guides = [
         ]
       },
       {
-        heading: 'How to follow it without losing your mind',
+        heading: 'Following transfer news',
         body:
-          'Transfer news is a mix of genuine reporting, negotiation leaks and outright invention. Treat social media posts as leads, not facts. A transfer is official when the clubs announce it — not when an account with a blue tick says “here we go”.',
+          'Transfer news is a mix of reporting, negotiation leaks and unverified claims. Treat social media posts as leads, not facts. A transfer is official when the clubs announce it.',
         bullets: [
           'Look for club statements and league registration.',
           'Medical tests and work permits can delay announcements.',
-          'Deadline day produces plenty of noise and very few certainties.'
+          'Many deadline-day reports remain unconfirmed until a club announcement.'
         ]
       }
     ],
@@ -366,10 +366,10 @@ export const guides = [
   {
     id: 'guide-positions',
     slug: 'positions-explained',
-    title: 'Every position, simply explained',
+    title: 'Positions explained',
     category: 'The basics',
     summary:
-      'From goalkeeper to false nine — a beginner-friendly map of who does what on a football pitch.',
+      'The role of each position, from goalkeeper to forward, and the most common formations.',
     readTime: 6,
     difficulty: 'Starter',
     emoji: '🧭',
@@ -379,7 +379,7 @@ export const guides = [
       {
         heading: 'Goalkeeper (GK)',
         body:
-          'The goalkeeper is the only player allowed to handle the ball inside their own penalty area. Their job is to stop shots, claim crosses and start attacks. Modern goalkeepers are expected to be comfortable with the ball at their feet.',
+          'The goalkeeper is the only player allowed to handle the ball inside their own penalty area. Their job is to stop shots, claim crosses and start attacks. Modern goalkeepers are also expected to be comfortable with the ball at their feet.',
         bullets: [
           'Must wear a different colour from outfield players.',
           'Can only handle the ball inside their own penalty area.',
@@ -389,7 +389,7 @@ export const guides = [
       {
         heading: 'Defenders',
         body:
-          'Defenders protect the goal and try to stop attacks. Centre-backs usually mark strikers and defend crosses; full-backs play on the left or right and often push forward to support attacks. Some teams use wing-backs, who are expected to cover the whole flank.',
+          'Defenders protect the goal and try to stop attacks. Centre-backs usually mark strikers and defend crosses; full-backs play on the left or right and often push forward to support attacks. Some teams use wing-backs, who cover the whole flank.',
         bullets: [
           'Centre-back (CB): central defender, strong in the air and in tackles.',
           'Full-back (LB/RB): wide defender who joins attacks.',
@@ -402,8 +402,8 @@ export const guides = [
           'Midfielders link defence and attack. A holding midfielder protects the back line; a central midfielder covers ground and keeps the ball moving; an attacking midfielder plays closer to the strikers and creates chances.',
         bullets: [
           'Defensive midfielder (DM): screens the defence and breaks up play.',
-          'Central midfielder (CM): the engine room — passing, pressing and running.',
-          'Attacking midfielder (AM): operates between the lines and creates.'
+          'Central midfielder (CM): passes, presses and covers ground.',
+          'Attacking midfielder (AM): plays between the lines and creates chances.'
         ]
       },
       {
@@ -417,11 +417,11 @@ export const guides = [
         ]
       },
       {
-        heading: 'Formations are starting shapes',
+        heading: 'Formations',
         body:
-          'A formation like 4-3-3 describes how players line up at kick-off: four defenders, three midfielders and three forwards. In reality, teams shift constantly — defenders overlap, midfielders rotate and forwards press. The formation is a starting point, not a cage.',
+          'A formation like 4-3-3 describes how players line up at kick-off: four defenders, three midfielders and three forwards. Teams shift during matches, with defenders overlapping, midfielders rotating and forwards pressing. The formation is the starting shape.',
         bullets: [
-          '4-3-3: balanced, wide and popular for pressing teams.',
+          '4-3-3: three midfielders and three forwards, often with wide attackers.',
           '4-2-3-1: two holding midfielders behind an attacking trio.',
           '3-5-2: three centre-backs with wing-backs providing width.'
         ]
@@ -436,10 +436,10 @@ export const guides = [
   {
     id: 'guide-cups',
     slug: 'cups-and-europe',
-    title: 'Cups, Europe and the rest of the season',
+    title: 'Cups and European qualification',
     category: 'Beyond the league',
     summary:
-      'The FA Cup, the EFL Cup and European nights — how the other competitions fit together.',
+      'The FA Cup, EFL Cup and European competitions, and how qualification places are awarded.',
     readTime: 6,
     difficulty: 'Getting there',
     emoji: '🏆',
@@ -449,7 +449,7 @@ export const guides = [
       {
         heading: 'One season, several competitions',
         body:
-          'A Premier League club can play in the league, two domestic cups and up to three European competitions. That means a busy calendar, squad rotation and a lot of travel. Winning any trophy is an achievement, but the league is the measure of consistency.',
+          'A Premier League club can play in the league, two domestic cups and up to three European competitions. That means a busy calendar, squad rotation and a lot of travel. The league measures consistency across the season; the cups are knockout trophies.',
         bullets: [
           'Premier League: 38 matches, decided by the table.',
           'FA Cup: knockout competition open to clubs across the football pyramid.',
@@ -459,7 +459,7 @@ export const guides = [
       {
         heading: 'The FA Cup',
         body:
-          'The FA Cup is the oldest national knockout competition in world football. It is a single-elimination tournament: lose and you are out. Lower-division clubs host bigger teams in early rounds, which is where the famous “giant-killing” upsets happen.',
+          'The FA Cup is the oldest national knockout competition in world football. It is a single-elimination tournament: lose and you are out. Lower-division clubs can host bigger teams in early rounds, which is where upsets often happen.',
         bullets: [
           'Draws are settled by a replay in some rounds, or extra time and penalties.',
           'The final is played at Wembley Stadium.',
@@ -469,7 +469,7 @@ export const guides = [
       {
         heading: 'The EFL Cup',
         body:
-          'The EFL Cup, currently branded the Carabao Cup, is the other major domestic knockout trophy. It is often used by big clubs to give younger players and squad players minutes, especially in the early rounds. The final is also at Wembley.',
+          'The EFL Cup, currently branded the Carabao Cup, is the other major domestic knockout trophy. Big clubs often use it to give younger players and squad players minutes, especially in the early rounds. The final is also at Wembley.',
         bullets: [
           'Two-legged semi-finals are used in some seasons.',
           'The winner qualifies for the Europa Conference League play-off round.',
@@ -479,11 +479,11 @@ export const guides = [
       {
         heading: 'European qualification',
         body:
-          'The top clubs qualify for UEFA competitions based on league position and cup results. The Champions League is the biggest prize; the Europa League and Conference League are the other two tiers. The exact number of places can change based on English clubs’ performance in Europe.',
+          'The top clubs qualify for UEFA competitions based on league position and cup results. The Champions League is the highest tier; the Europa League and Conference League are the other two. The exact number of places can change based on English clubs’ performance in Europe.',
         bullets: [
-          'Champions League: the elite competition, recently expanded to a larger league phase.',
-          'Europa League: a major European trophy with a long history.',
-          'Conference League: a newer competition for clubs from across Europe.'
+          'Champions League: the top European competition, with a league phase.',
+          'Europa League: the second tier of European competition.',
+          'Conference League: the third tier, for clubs from across Europe.'
         ]
       }
     ],
@@ -496,10 +496,10 @@ export const guides = [
   {
     id: 'guide-pick-club',
     slug: 'how-to-pick-a-club',
-    title: 'How to pick a club (without overthinking it)',
+    title: 'How to pick a club',
     category: 'Culture',
     summary:
-      'Your club does not have to be your local one, the biggest one or the one your friend supports. Here is how to choose.',
+      'Factors to consider when choosing a Premier League club to support.',
     readTime: 5,
     difficulty: 'Starter',
     emoji: '💚',
@@ -507,43 +507,43 @@ export const guides = [
     featured: true,
     sections: [
       {
-        heading: 'You do not need a perfect reason',
+        heading: 'Common reasons for choosing a club',
         body:
-          'People choose clubs for all sorts of reasons: geography, family, a player they liked, a shirt, a stadium, a single memorable match. There is no entrance exam. The only real test is whether you enjoy following them.',
+          'People choose clubs for many reasons: geography, family, a player they liked, a shirt, a stadium or a single memorable match. There is no entrance exam. The main test is whether you enjoy following the club.',
         bullets: [
           'Local clubs offer the easiest connection and the best chance to attend games.',
-          'Family ties are powerful — supporting the same club as a parent is a classic route in.',
-          'A player, a style of play or even a colour can be a perfectly good starting point.'
+          'Family ties are a common route into supporting a club.',
+          'A player, a style of play or a colour can be a starting point.'
         ]
       },
       {
-        heading: 'Start with the matchday experience',
+        heading: 'Watch matches first',
         body:
-          'Watch a few full matches before committing. Notice what you enjoy: a loud crowd, a clever passing team, a scrappy underdog, a big occasion? Your answer will point you toward certain clubs. Highlights are fun, but full matches show you the real rhythm of a team.',
+          'Watch a few full matches before deciding. Notice what you enjoy: a loud crowd, a passing team, an underdog or a big occasion. Full matches show the rhythm of a team better than highlights.',
         bullets: [
-          'Watch a game with the sound on to feel the atmosphere.',
-          'Try a neutral match and see which team you naturally root for.',
+          'Watch a game with the sound on to hear the crowd.',
+          'Try a neutral match and see which team you support naturally.',
           'Read about a club’s history and supporters before deciding.'
         ]
       },
       {
-        heading: 'Think about what you want from following',
+        heading: 'Decide what you want from following',
         body:
-          'Some people want trophies and big European nights. Others want a community club, a local ground or a team that develops young players. Neither is better. Being honest about what you enjoy will save you from picking a club that does not fit.',
+          'Some people want trophies and European matches. Others want a community club, a local ground or a team that develops young players. Being clear about what you enjoy will help you choose a club that fits.',
         bullets: [
-          'Trophy-hunting brings expectation and pressure.',
-          'Underdog clubs bring scarcity of success but a strong sense of shared identity.',
-          'A club with a distinct style gives you something to watch even in a bad season.'
+          'Trophy-chasing brings expectation and pressure.',
+          'Underdog clubs bring fewer trophies and a strong shared identity.',
+          'A club with a distinct style gives you something to watch in a bad season.'
         ]
       },
       {
-        heading: 'Do not rush it',
+        heading: 'Take your time',
         body:
-          'You can follow the league for a season before choosing. Nobody is keeping score. The best club for you is the one you keep thinking about after the final whistle — not the one with the biggest social media following.',
+          'You can follow the league for a season before choosing a club. Use the club pages and a few matches to decide. The best club for you is one you want to keep following.',
         bullets: [
-          'Take the PitchPass club finder for a starting shortlist.',
+          'Use the club finder for a starting shortlist.',
           'Read the club pages and watch a match or two.',
-          'Give it time. Supporting a club is a long relationship.'
+          'Give it time. Supporting a club is a long-term interest.'
         ]
       }
     ],
@@ -556,10 +556,10 @@ export const guides = [
   {
     id: 'guide-derbies',
     slug: 'derbies-and-rivalries',
-    title: 'Why football rivalries matter',
+    title: 'Rivalries and derbies',
     category: 'Culture',
     summary:
-      'Derbies are about more than three points. Here is what makes them so intense — and how to enjoy one.',
+      'What derbies are, notable English rivalries and what to expect from a derby match.',
     readTime: 4,
     difficulty: 'Getting there',
     emoji: '🔥',
@@ -569,17 +569,17 @@ export const guides = [
       {
         heading: 'What makes a derby',
         body:
-          'A derby is a match between clubs with a local or historical rivalry. Some are based on geography — two clubs from the same city. Others are built on class, religion, industry or a specific moment in history. The shared ingredient is that losing hurts more than usual.',
+          'A derby is a match between clubs with a local or historical rivalry. Some are based on geography — two clubs from the same city. Others are built on class, religion, industry or a specific moment in history.',
         bullets: [
-          'Local derbies reduce travel and intensify bragging rights.',
-          'Rivalries can be one-sided in trophies but never in feeling.',
-          'Derby results can define a season even if the table says otherwise.'
+          'Local derbies reduce travel and increase local attention.',
+          'Rivalries can continue through long periods without trophies.',
+          'Derby results matter to supporters beyond the league position.'
         ]
       },
       {
-        heading: 'Famous English rivalries',
+        heading: 'English rivalries',
         body:
-          'Every club has a rival, and some rivalries are known around the world. The north London derby between Arsenal and Tottenham is one of the fiercest. The Manchester derby has become a title-race fixture. Liverpool against Manchester United is a clash of two of England’s most successful clubs.',
+          'Every club has a rival, and some rivalries are known around the world. The north London derby between Arsenal and Tottenham is one of the longest-running. The Manchester derby is a local rivalry between United and City. Liverpool against Manchester United is a clash of two of England’s most successful clubs.',
         bullets: [
           'Arsenal vs Tottenham: north London derby.',
           'Manchester United vs Manchester City: Manchester derby.',
@@ -588,29 +588,29 @@ export const guides = [
         ]
       },
       {
-        heading: 'How to watch a derby',
+        heading: 'Watching a derby',
         body:
-          'Expect intensity, tackles and a loud crowd. Form often goes out of the window. Watch how the players react to the crowd and how the managers set up — derbies are often more cautious than they look, precisely because nobody wants to lose.',
+          'Expect intensity, tackles and a loud crowd. Form can matter less than usual. Watch how the players react to the crowd and how the managers set up — derbies are often more cautious than they look because neither side wants to lose.',
         bullets: [
           'Rivalry games can be tight and tactical rather than open.',
-          'Emotions run high; cards and flashpoints are common.',
-          'The atmosphere is usually the best part. Watch the crowd during the warm-up.'
+          'Cards and flashpoints are more common.',
+          'The crowd is usually louder than at a regular league match.'
         ]
       }
     ],
     keyTerms: [
       { term: 'Derby', definition: 'A match between local or historical rivals.' },
-      { term: 'Bragging rights', definition: 'The social prize that comes with beating a rival.' },
+      { term: 'Bragging rights', definition: 'The social reward that comes with beating a rival.' },
       { term: 'Tyne–Wear derby', definition: 'The rivalry between Newcastle United and Sunderland.' }
     ]
   },
   {
     id: 'guide-glossary',
     slug: 'football-glossary',
-    title: 'The football words everyone uses',
+    title: 'Football glossary',
     category: 'Culture',
     summary:
-      'A plain-English glossary of the terms you will hear on commentary, in group chats and on the terraces.',
+      'Common terms used in Premier League commentary, statistics and transfer news.',
     readTime: 4,
     difficulty: 'Starter',
     emoji: '💬',
@@ -619,8 +619,7 @@ export const guides = [
     sections: [
       {
         heading: 'Match basics',
-        body:
-          'These are the words you will hear in almost every broadcast. Learn them and the commentary suddenly makes sense.',
+        body: 'Common terms used in match commentary.',
         bullets: [
           'Clean sheet — conceding no goals in a match.',
           'Hat-trick — three goals by the same player.',
@@ -632,8 +631,7 @@ export const guides = [
       },
       {
         heading: 'Tactics and stats',
-        body:
-          'Modern coverage is full of numbers. You do not need all of them, but these are the ones worth knowing.',
+        body: 'Common terms used in tactical analysis and statistics.',
         bullets: [
           'xG (expected goals) — a statistical estimate of how good a chance was.',
           'Pressing — closing down opponents quickly to win the ball back.',
@@ -645,8 +643,7 @@ export const guides = [
       },
       {
         heading: 'League and transfer talk',
-        body:
-          'These terms appear in news stories and table discussions. They are useful for following the season beyond a single match.',
+        body: 'Terms used in news stories and table discussions.',
         bullets: [
           'Matchday — a round of fixtures.',
           'Goal difference — goals scored minus goals conceded.',
@@ -661,6 +658,77 @@ export const guides = [
       { term: 'xG', definition: 'Expected goals — a model that estimates the likelihood a shot becomes a goal.' },
       { term: 'Low block', definition: 'A defensive approach where the team sits deep and compact.' },
       { term: 'Set piece', definition: 'A dead-ball situation such as a corner, free kick or throw-in.' }
+    ]
+  },
+  {
+    id: 'guide-players',
+    slug: 'players-to-know',
+    title: 'Players to know',
+    category: 'The basics',
+    summary:
+      'Meet six players who show how modern Premier League teams are built, from finishers to deep midfielders.',
+    readTime: 5,
+    difficulty: 'Starter',
+    emoji: '⭐',
+    sortOrder: 12,
+    featured: false,
+    sections: [
+      {
+        heading: 'Why learn the players?',
+        body:
+          'You do not need to memorise every squad, but knowing a handful of players gives each match a story. You can follow a striker’s run, a midfielder’s passing or a defender’s positioning. Start with a few names and let the rest follow.',
+        bullets: [
+          'Players are often described by role: goalkeeper, defender, midfielder or forward.',
+          'Commentators use names and nicknames; matching them to a shirt number helps.',
+          'Form and injuries change the picture, so treat any list as a starting point.'
+        ]
+      },
+      {
+        heading: 'Forwards and creators',
+        body:
+          'The players most likely to decide a match are usually the forwards and attacking midfielders. They take shots, make the final pass and carry the pressure of scoring. Watch how they find space between defenders.',
+        bullets: [
+          'Mohamed Salah: a forward known for scoring and assisting from the right.',
+          'Erling Haaland: a centre-forward whose movement in the box creates chances.',
+          'Bukayo Saka: a wide attacker who dribbles, crosses and cuts inside.',
+          'Cole Palmer: a creative attacker who can play as a number 10 or wide.'
+        ]
+      },
+      {
+        heading: 'Midfield control',
+        body:
+          'Midfielders link defence and attack. A deep midfielder can set the tempo, break up play and decide which side the team attacks. You will often see them receive the ball from the goalkeeper and start the move.',
+        bullets: [
+          'Rodri: a deep midfielder who controls possession and protects the back line.',
+          'Declan Rice: a midfielder who covers ground and wins the ball back.',
+          'A midfield pair often splits into one player holding and one player advancing.'
+        ]
+      },
+      {
+        heading: 'Defenders and goalkeepers',
+        body:
+          'Defenders and goalkeepers rarely get the headlines, but they decide whether a team can attack with confidence. Watch a centre-back’s positioning, a full-back’s runs and a goalkeeper’s distribution.',
+        bullets: [
+          'Virgil van Dijk: a centre-back known for reading the game and organising the defence.',
+          'Goalkeepers are the only players who can use their hands inside the penalty area.',
+          'Modern goalkeepers are expected to pass as well as save.'
+        ]
+      },
+      {
+        heading: 'How to follow players',
+        body:
+          'Pick one or two players to watch in a match. Notice where they start, how often they receive the ball and what they do when they lose it. That is a quicker way to learn than trying to memorise all 20 squads.',
+        bullets: [
+          'Use the club pages to see each club’s stadium and history.',
+          'Watch a full match rather than only highlights.',
+          'Give yourself time: the names become familiar after a few weeks.'
+        ]
+      }
+    ],
+    keyTerms: [
+      { term: 'Number 10', definition: 'An attacking midfielder who plays between the opposition’s midfield and defence.' },
+      { term: 'False nine', definition: 'A forward who drops into midfield to create space for others.' },
+      { term: 'Pressing forward', definition: 'A forward who closes down defenders to win the ball high up the pitch.' }
     ]
   }
 ];

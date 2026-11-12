@@ -99,7 +99,7 @@ export function StandingsTable({
         <span>
           <i className="legend-dot legend-dot--relegation" /> Relegation zone
         </span>
-        <span className="table-legend__note">Demo table after 12 matchdays</span>
+        <span className="table-legend__note">Demo table</span>
       </div>
     </div>
   );

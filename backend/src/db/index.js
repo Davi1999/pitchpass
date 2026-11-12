@@ -11,7 +11,7 @@ import { standings } from '../data/standings.js';
 import { news } from '../data/news.js';
 
 const backendRoot = fileURLToPath(new URL('../../', import.meta.url));
-const SEED_VERSION = '2026-11-11.2';
+const SEED_VERSION = '2026-11-13.2';
 const schemaPath = path.join(backendRoot, 'src/db/schema.sql');
 
 let db;

@@ -9,13 +9,10 @@ export function NotFoundPage() {
       </span>
       <span className="eyebrow">
         <span className="eyebrow__dot" />
-        Off the pitch
+        404
       </span>
-      <h1>That page went out for a throw-in.</h1>
-      <p>
-        The link may be old, mistyped or just outside the lines. Head back to the pitch and
-        we will get you started again.
-      </p>
+      <h1>Page not found</h1>
+      <p>The link may be old or mistyped.</p>
       <div className="not-found__actions">
         <Link className="btn btn--primary" to="/">
           Back to home

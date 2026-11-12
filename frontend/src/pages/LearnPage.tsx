@@ -7,6 +7,7 @@ import { GuideIcon } from '../components/Glyphs';
 import { PageHeader } from '../components/PageHeader';
 import { ErrorState, EmptyState, PageSkeleton } from '../components/States';
 import { useApi } from '../hooks/useApi';
+import { guideMedia } from '../lib/media';
 import { getReadGuides } from '../lib/progress';
 
 export function LearnPage() {
@@ -28,6 +29,7 @@ export function LearnPage() {
   const progress = Math.round((readCount / Math.max(1, data.guides.length)) * 100);
   const spotlight =
     data.guides.find((guide) => guide.slug === 'premier-league-explained') ?? data.guides[0];
+  const spotlightMedia = spotlight ? guideMedia[spotlight.slug] : undefined;
 
   const filtered = data.guides.filter((guide) => {
     const matchesCategory = category === 'All' || guide.category === category;
@@ -42,8 +44,8 @@ export function LearnPage() {
     <>
       <PageHeader
         eyebrow="Learn"
-        title="Football, without the gatekeeping."
-        description="Short, friendly guides to the rules, the league and the culture. Start anywhere — no stupid questions."
+        title="Football guides"
+        description="Guides to the rules, league format and football culture."
       >
         <div className="reading-progress">
           <div className="reading-progress__top">
@@ -62,9 +64,20 @@ export function LearnPage() {
         <section className="section section--tight">
           <div className="container">
             <Link className="spotlight-guide" to={`/learn/${spotlight.slug}`}>
-              <div className="spotlight-guide__icon" aria-hidden="true">
-                <GuideIcon slug={spotlight.slug} />
-              </div>
+              {spotlightMedia ? (
+                <span className="spotlight-guide__thumb" aria-hidden="true">
+                  <img
+                    src={spotlightMedia.banner.thumb ?? spotlightMedia.banner.src}
+                    alt=""
+                    loading="lazy"
+                    decoding="async"
+                  />
+                </span>
+              ) : (
+                <div className="spotlight-guide__icon" aria-hidden="true">
+                  <GuideIcon slug={spotlight.slug} />
+                </div>
+              )}
               <div className="spotlight-guide__copy">
                 <span className="spotlight-guide__label">Start here</span>
                 <h2>{spotlight.title}</h2>
@@ -142,8 +155,8 @@ export function LearnPage() {
               ))}
             </div>
           ) : (
-            <EmptyState icon="question" title="No guides match that">
-              Try a different word, or clear the filters to see everything.
+            <EmptyState icon="question" title="No guides found">
+              Try a different search term or clear the filters.
             </EmptyState>
           )}
         </div>

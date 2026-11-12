@@ -1,6 +1,6 @@
 # PitchPass
 
-**The Premier League, minus the confusion.**
+**A beginner's guide to the English Premier League.**
 
 PitchPass is a beginner's guide to English Premier League football. It helps new fans learn the rules, meet all 20 clubs, follow a (demo) matchday, and find a club that feels like theirs.
 
@@ -9,15 +9,15 @@ This repository is an early working prototype: a React single-page app, an Expre
 ## What is in the prototype
 
 - **Home dashboard** — a guided first visit, featured guides, a live match card, upcoming fixtures, a table snapshot and club-finder call to action.
-- **Learn library** — 11 plain-English guides covering the league format, offside, VAR, cards, matchday basics, transfers, positions, cups, rivalries and the football glossary.
-- **Guide reader** — long-form article layout, key terms, an in-page table of contents, reading progress and a "mark as read" state saved in `localStorage`.
-- **Club directory** — all 20 clubs with original monogram badges, search, club DNA and a detailed club page with history, honours, rivalry, fixtures and related guides.
+- **Learn library** — 12 plain-English guides covering the league format, offside, VAR, cards, matchday basics, transfers, positions, cups, rivalries, the football glossary and a player primer.
+- **Guide reader** — long-form article layout with photo banners, inline figures and captions, key terms, an in-page table of contents, reading progress and a "mark as read" state saved in `localStorage`.
+- **Club directory** — all 20 clubs with official club badges, search, club DNA and a detailed club page with history, honours, rivalry, fixtures and related guides.
 - **Club finder** — a five-question matching flow that scores all 20 clubs and returns a top three with reasons. You can save a club as "my club" locally.
 - **Live Hub** — fixtures, results, a full league table and a simulated live match whose clock advances from 34 minutes while the API is running. The page polls every 20 seconds.
 - **Quiz** — 10 questions with server-side answer checking, instant explanations, a personal best saved in `localStorage`, and a full answer review.
 - **Responsive design** — custom design system, local variable fonts, SVG glyphs instead of emoji, keyboard focus states and reduced-motion support.
 
-> **Demo data notice:** scores, fixtures, the table and live commentary are seeded fixtures, not a live feed. Club badges are original monograms, not official crests. PitchPass is not affiliated with the Premier League or any club.
+> **Demo data notice:** scores, fixtures, the table and live commentary are seeded fixtures, not a live feed. Club badges are the official crests of their respective clubs and are used here for identification in a non-commercial, educational prototype. Photographs and diagrams are credited on the `/credits` page. PitchPass is not affiliated with the Premier League or any club.
 
 ## Prerequisites
 
@@ -75,12 +75,13 @@ pitchpass/
 │   │   └── server.js        # API entry point
 │   └── test/                # API integration tests
 ├── frontend/
+│   ├── public/media/        # Downloaded badges, guide photos, player portraits
 │   └── src/
 │       ├── api/             # Typed fetch client
 │       ├── components/      # Layout, cards, crests, tables, states
 │       ├── hooks/           # useApi data-loading hook
-│       ├── lib/             # Formatting + localStorage progress helpers
-│       ├── pages/           # Home, Learn, Clubs, Live, Quiz, Finder
+│       ├── lib/             # Formatting, media map, localStorage helpers
+│       ├── pages/           # Home, Learn, Clubs, Live, Quiz, Finder, Credits
 │       ├── styles/          # Design tokens + all component styles
 │       ├── types.ts         # Shared API response types
 │       └── App.tsx          # Routes
@@ -148,7 +149,7 @@ The prototype is intentionally shaped for iteration. Useful next moves:
 1. **Real football data** — add a provider adapter behind `repositories.js` for fixtures, results, table and live events, with a cache and API-key configuration.
 2. **PostgreSQL** — swap the SQLite driver for `pg` behind the same repository interface, with migrations.
 3. **Accounts and sync** — persist favourite clubs, reading progress and quiz history server-side.
-4. **More club content** — supporter stories, stadium guides, player primers and newcomer FAQs.
+4. **More club content** — supporter stories, stadium guides and newcomer FAQs.
 5. **Match detail pages** — event timelines, lineups, stats and simple tactical explainers.
 6. **Editorial tooling** — a lightweight admin flow for guides and news.
 7. **Accessibility and performance passes** — automated axe checks, route-level code splitting and image/font optimisation.
@@ -161,6 +162,14 @@ npm test
 
 The API test suite covers health, clubs, search, club detail, guides, quiz answer secrecy and validation, club-finder ranking, standings, fixtures and the home payload.
 
+## Media and licensing
+
+- **Club badges** are the official crests of their respective clubs. They are included for identification in this non-commercial, educational prototype and remain the property of their clubs. They are not licensed for reuse. If you plan to publish PitchPass commercially, replace them with licensed assets or obtain permission.
+- **Photographs and diagrams** are from Wikimedia Commons. Each item is credited on the `/credits` page in the app and under the relevant image, with the author, licence and a link to the source. Most are CC BY, CC BY-SA, CC0 or public domain. Resized or cropped versions are used for layout.
+- **Player portraits** are used to illustrate the "Players to know" guide. They are not endorsements by the players.
+
+The media registry lives in `frontend/src/lib/media.ts`; image files live under `frontend/public/media/`.
+
 ## License
 
-Prototype for learning and iteration. Club names and competition names belong to their respective owners. All badges in this repository are original monogram placeholders.
+Prototype for learning and iteration. Club names, competition names, club badges and player likenesses belong to their respective owners. See **Media and licensing** above for the status of the images included in this repository.

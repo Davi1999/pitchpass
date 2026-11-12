@@ -58,8 +58,8 @@ export function LivePage() {
     <>
       <PageHeader
         eyebrow="Live Hub"
-        title="Matchday, without the noise."
-        description="Fixtures, results and the table in one place. The live fixture is a simulated demo feed, updated every 20 seconds."
+        title="Fixtures, results and table"
+        description="Premier League fixtures, results and the table. The live match is a simulated demo feed, updated every 20 seconds."
       >
         <div className="live-header-actions">
           <span className="demo-pill">
@@ -83,7 +83,7 @@ export function LivePage() {
               {displayMatch ? (
                 <>
                   <div className="live-stage__head">
-                    <h2>{liveMatch ? 'Live right now' : 'Latest from the demo'}</h2>
+                    <h2>{liveMatch ? 'Live match' : 'Latest result'}</h2>
                     {!liveMatch && (
                       <span className="small-note">
                         The simulated match has finished. The next one starts when the API restarts.
@@ -109,7 +109,7 @@ export function LivePage() {
               ) : (
                 <div className="panel">
                   <h2>No match to show</h2>
-                  <p className="muted-copy">Check back when the next demo fixture kicks off.</p>
+                  <p className="muted-copy">The next demo fixture will appear here.</p>
                 </div>
               )}
             </div>
@@ -126,7 +126,7 @@ export function LivePage() {
                   ))}
                 </div>
                 <Link className="text-link text-link--light" to="/clubs">
-                  Explore the clubs
+                  All clubs
                   <ArrowRight />
                 </Link>
               </div>
@@ -138,8 +138,8 @@ export function LivePage() {
       <section className="section section--tight">
         <div className="container">
           <SectionHeading
-            eyebrow="The table"
-            title="Every position, every point."
+            eyebrow="Table"
+            title="League table"
             description="Top four: European places. Bottom three: relegation. Goal difference is the first tiebreaker."
           />
           {standingsState.loading && !table.length ? (
@@ -163,9 +163,8 @@ export function LivePage() {
             <div>
               <strong>This is a prototype, not a live score service.</strong>
               <p>
-                Scores, fixtures and the table are seeded demo data. The Liverpool–Manchester
-                City clock advances from 34 minutes when the API starts, so you can watch the
-                Live Hub update. Real data would plug into this shape later.
+                Scores, fixtures and the table are demo data. The Liverpool–Manchester City
+                clock starts at 34 minutes when the API starts and advances with real time.
               </p>
             </div>
             <Link className="text-link" to="/learn">

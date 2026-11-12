@@ -2,21 +2,21 @@ export const discoveryQuestions = [
   {
     id: 'mood',
     prompt: 'What do you want from a matchday?',
-    helper: 'There is no wrong answer. Pick the scene that sounds most like you.',
+    helper: 'Choose the option closest to what you enjoy.',
     options: [
       {
-        label: 'A wall of noise',
-        description: 'Give me the loudest stand in the ground.',
+        label: 'Loud home support',
+        description: 'The loudest stand in the ground.',
         weights: { atmosphere: 3, community: 1 }
       },
       {
-        label: 'The biggest stage',
-        description: 'I want trophies, drama and global occasion.',
+        label: 'Big matches and trophies',
+        description: 'Major trophies, large crowds and European competition.',
         weights: { glory: 3, history: 1 }
       },
       {
-        label: 'Something a bit different',
-        description: 'I like clubs that do things their own way.',
+        label: 'A club with its own approach',
+        description: 'Clubs that do things differently.',
         weights: { innovation: 3, underdog: 1 }
       }
     ]
@@ -24,69 +24,69 @@ export const discoveryQuestions = [
   {
     id: 'place',
     prompt: 'Where should your club be from?',
-    helper: 'Geography is one of the simplest ways into a club.',
+    helper: 'Choose a region.',
     options: [
       {
         label: 'London',
-        description: 'Seven clubs, endless derbies, big-city energy.',
+        description: 'Seven Premier League clubs are in London.',
         weights: { london: 3, global: 1 }
       },
       {
         label: 'The north',
-        description: 'Football towns, old grounds and serious pride.',
+        description: 'Football towns with large, long-established supports.',
         weights: { north: 3, tradition: 1 }
       },
       {
         label: 'The coast and the south',
-        description: 'Seaside air, shorter queues, a different pace.',
+        description: 'Bournemouth and Brighton are on the south coast.',
         weights: { south: 3, community: 1 }
       },
       {
         label: 'The Midlands',
-        description: 'Heartland clubs with deep roots and proper history.',
+        description: 'Aston Villa, Wolves and Nottingham Forest are in the Midlands.',
         weights: { midlands: 3, tradition: 1 }
       }
     ]
   },
   {
     id: 'story',
-    prompt: 'Which story pulls you in?',
-    helper: 'Every club has a narrative. Choose the one you would follow.',
+    prompt: 'Which club history interests you?',
+    helper: 'Choose the history you would follow.',
     options: [
       {
-        label: 'Trophies and famous nights',
-        description: 'I want to see silverware and European football.',
+        label: 'Trophies and European competition',
+        description: 'Clubs with major trophies and European matches.',
         weights: { glory: 3, history: 1 }
       },
       {
-        label: 'The underdog breaking through',
-        description: 'I love a club punching above its weight.',
+        label: 'An underdog club',
+        description: 'Clubs that have climbed the divisions or compete with smaller budgets.',
         weights: { underdog: 3, community: 1 }
       },
       {
-        label: 'A club with its own way',
-        description: 'Smart recruitment, bold ideas, no copycats.',
+        label: 'A club with its own approach',
+        description: 'Clubs known for recruitment or a distinct style.',
         weights: { innovation: 3, value: 2 }
       }
     ]
   },
   {
     id: 'football',
-    prompt: 'How do you like your football?',
-    helper: 'Think about what you enjoy watching, not what sounds smart.',
+    prompt: 'What style of football do you prefer?',
+    helper: 'Choose the style you most enjoy watching.',
     options: [
       {
-        label: 'Quick and on the front foot',
+        label: 'Fast, attacking football',
         description: 'Pace, pressing and chances at both ends.',
         weights: { attacking: 3, possession: 1 }
       },
       {
-        label: 'Control the game',
-        description: 'Calm passing, patient build-up, chess on grass.',
+        label: 'Possession football',
+        description: 'Patient build-up and control of the ball.',
         weights: { possession: 3, innovation: 1 }
       },
       {
-        label: 'Grit and graft',
+        label: 'Physical, hard-working football',
         description: 'Hard running, strong tackles and earned wins.',
         weights: { grit: 3, tradition: 1 }
       }
@@ -95,26 +95,26 @@ export const discoveryQuestions = [
   {
     id: 'values',
     prompt: 'What matters most off the pitch?',
-    helper: 'The best club for you is the one whose identity you actually enjoy.',
+    helper: 'Choose the club identity that appeals most.',
     options: [
       {
         label: 'History and tradition',
-        description: 'Old grounds, famous names and stories passed down.',
+        description: 'Old grounds, long histories and established routines.',
         weights: { history: 3, tradition: 2 }
       },
       {
         label: 'Community and belonging',
-        description: 'A club that feels woven into its neighbourhood.',
+        description: 'A club connected to its local area.',
         weights: { community: 3, atmosphere: 1 }
       },
       {
-        label: 'Global reach and big names',
-        description: 'Worldwide fans, superstar players, huge occasions.',
+        label: 'Global support and big names',
+        description: 'Worldwide supporters and high-profile players.',
         weights: { global: 3, glory: 1 }
       },
       {
-        label: 'Brave and different',
-        description: 'A modern project with its own identity.',
+        label: 'Innovation',
+        description: 'A modern club with its own approach.',
         weights: { innovation: 2, underdog: 2, value: 1 }
       }
     ]
@@ -122,20 +122,20 @@ export const discoveryQuestions = [
 ];
 
 export const traitLabels = {
-  atmosphere: 'big-match atmosphere',
-  community: 'community spirit',
+  atmosphere: 'atmosphere',
+  community: 'community',
   history: 'history',
-  glory: 'trophy pedigree',
-  innovation: 'a fresh approach',
-  underdog: 'underdog energy',
-  london: 'London life',
-  north: 'northern football culture',
-  south: 'a southern setting',
-  midlands: 'Midlands roots',
+  glory: 'trophies',
+  innovation: 'innovation',
+  underdog: 'underdog club',
+  london: 'London',
+  north: 'northern England',
+  south: 'southern England',
+  midlands: 'the Midlands',
   tradition: 'tradition',
   attacking: 'attacking football',
-  grit: 'grit and graft',
+  grit: 'physical football',
   possession: 'possession football',
-  global: 'global reach',
-  value: 'smart recruitment'
+  global: 'global support',
+  value: 'recruitment'
 };

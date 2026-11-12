@@ -45,7 +45,7 @@ test('health reports a seeded demo database', async () => {
   assert.equal(body.status, 'ok');
   assert.equal(body.demoData, true);
   assert.equal(body.clubs, 20);
-  assert.equal(body.guides, 11);
+  assert.equal(body.guides, 12);
 });
 
 test('club directory lists and searches all 20 clubs', async () => {
@@ -76,15 +76,20 @@ test('unknown club returns a JSON 404', async () => {
 
 test('guides expose categories and full content', async () => {
   const list = await api('/api/guides');
-  assert.equal(list.body.guides.length, 11);
+  assert.equal(list.body.guides.length, 12);
   assert.equal(list.body.guides[0].slug, 'premier-league-explained');
   assert.ok(list.body.categories.some((category) => category.name === 'Rules'));
 
   const offside = await api('/api/guides/offside-explained');
   assert.equal(offside.response.status, 200);
-  assert.equal(offside.body.guide.title, 'Offside, without the headache');
+  assert.equal(offside.body.guide.title, 'Offside rule explained');
   assert.ok(offside.body.guide.sections.length >= 4);
   assert.ok(offside.body.guide.keyTerms.length >= 3);
+
+  const players = await api('/api/guides/players-to-know');
+  assert.equal(players.response.status, 200);
+  assert.equal(players.body.guide.title, 'Players to know');
+  assert.ok(players.body.guide.sections.length >= 5);
 });
 
 test('quiz endpoints never leak answers before submission', async () => {

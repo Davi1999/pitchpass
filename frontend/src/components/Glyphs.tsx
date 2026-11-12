@@ -30,7 +30,8 @@ const guideIcons: Record<string, Icon> = {
   'cups-and-europe': Trophy,
   'how-to-pick-a-club': Heart,
   'derbies-and-rivalries': Flame,
-  'football-glossary': Chat
+  'football-glossary': Chat,
+  'players-to-know': Ball
 };
 
 const newsIcons: Record<string, Icon> = {

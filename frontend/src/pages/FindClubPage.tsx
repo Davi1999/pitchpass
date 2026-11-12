@@ -97,8 +97,8 @@ export function FindClubPage() {
       <>
         <PageHeader
           eyebrow="Club finder"
-          title="Five questions. A club that fits."
-          description="This is not a personality test and it is not binding. It is a way to turn “I don’t know who to support” into a shortlist."
+          title="Club finder"
+          description="Answer five questions to get three suggested clubs."
         />
         <section className="section section--tight section--last">
           <div className="container">
@@ -106,17 +106,16 @@ export function FindClubPage() {
               <div className="finder-intro__copy">
                 <span className="eyebrow">
                   <span className="eyebrow__dot" />
-                  No wrong answers
+                  How it works
                 </span>
-                <h2>Pick the matchday you actually want.</h2>
+                <h2>How the club finder works</h2>
                 <p>
-                  Big stadium or tight old ground? Trophies or underdogs? London noise or a
-                  northern away day? We will weigh your answers against the personality of
-                  all 20 clubs.
+                  The questions cover matchday atmosphere, location, club history, playing
+                  style and values. Your answers are scored against all 20 clubs.
                 </p>
                 <ul className="finder-steps">
                   <li>
-                    <span>01</span> Answer five quick questions
+                    <span>01</span> Answer five questions
                   </li>
                   <li>
                     <span>02</span> Get three suggested clubs
@@ -130,7 +129,7 @@ export function FindClubPage() {
                   <ArrowRight />
                 </button>
                 <p className="small-note">
-                  Takes about two minutes. You can retake it as many times as you like.
+                  Takes about two minutes. You can retake it at any time.
                 </p>
               </div>
 
@@ -258,11 +257,8 @@ export function FindClubPage() {
           <span className="eyebrow__dot" />
           Your shortlist
         </span>
-        <h1>Meet your best matches.</h1>
-        <p>
-          Based on the matchday you picked, these three clubs line up best. Treat it as a
-          starting point, not a lifelong contract.
-        </p>
+        <h1>Suggested clubs</h1>
+        <p>Based on your answers, these three clubs match most closely.</p>
         <button className="text-button" type="button" onClick={startFinder}>
           Retake the finder
         </button>
@@ -278,7 +274,7 @@ export function FindClubPage() {
           />
         </div>
         <div className="top-match__copy">
-          <span className="top-match__label">Your strongest match</span>
+          <span className="top-match__label">Closest match</span>
           <h2>{top.club.name}</h2>
           <p className="top-match__nickname">
             {top.club.nickname} · {top.club.city}
@@ -293,7 +289,7 @@ export function FindClubPage() {
           </div>
           <div className="top-match__actions">
             <Link className="btn btn--light" to={`/clubs/${top.club.id}`}>
-              Meet {top.club.name}
+              View {top.club.name}
               <ArrowRight />
             </Link>
             <button
@@ -325,7 +321,7 @@ export function FindClubPage() {
       </section>
 
       <section className="finder-alternatives">
-        <h2>Also worth a look</h2>
+        <h2>Other suggestions</h2>
         <div className="alternative-grid">
           {result.results.slice(1).map((entry) => (
             <article className="alternative-card" key={entry.club.id}>
@@ -351,7 +347,7 @@ export function FindClubPage() {
                 ))}
               </div>
               <Link className="text-link" to={`/clubs/${entry.club.id}`}>
-                Meet the club
+                View club
                 <ArrowRight />
               </Link>
             </article>
@@ -383,8 +379,8 @@ export function FindClubPage() {
       <div className="finder-disclaimer">
         <Heart />
         <p>
-          A club is a long relationship, not a BuzzFeed result. Read the pages, watch a few
-          matches and see who you keep thinking about after the final whistle.
+          These suggestions are based on your answers. Read the club pages and watch a few
+          matches before deciding.
         </p>
       </div>
     </div>

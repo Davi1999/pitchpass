@@ -90,8 +90,7 @@ function Footer() {
         <div className="footer__brand">
           <Logo />
           <p>
-            The Premier League for people who are still learning the words. Rules, clubs,
-            matchdays and the drama in between.
+            Rules, clubs, fixtures and results for new Premier League supporters.
           </p>
           <span className="footer__badge">Prototype · demo data</span>
         </div>
@@ -99,16 +98,17 @@ function Footer() {
         <div className="footer__links">
           <div>
             <h3>Explore</h3>
-            <Link to="/learn">Learn the game</Link>
+            <Link to="/learn">Guides</Link>
             <Link to="/clubs">Club directory</Link>
             <Link to="/live">Live Hub</Link>
-            <Link to="/quiz">The quiz</Link>
+            <Link to="/quiz">Quiz</Link>
           </div>
           <div>
             <h3>Start here</h3>
-            <Link to="/learn/premier-league-explained">How the league works</Link>
-            <Link to="/learn/offside-explained">Offside, explained</Link>
+            <Link to="/learn/premier-league-explained">League format</Link>
+            <Link to="/learn/offside-explained">Offside rule</Link>
             <Link to="/find-your-club">Find your club</Link>
+            <Link to="/credits">Photo credits</Link>
             <a href="/api/health" target="_blank" rel="noreferrer">
               API status
             </a>
@@ -119,8 +119,8 @@ function Footer() {
       <div className="container footer__bottom">
         <span>© {new Date().getFullYear()} PitchPass</span>
         <span>
-          Made for new fans. Not affiliated with the Premier League or any club. Club
-          badges are original monograms.
+          Not affiliated with the Premier League or any club. Club badges belong to their
+          clubs. <Link to="/credits">Photo credits</Link>.
         </span>
       </div>
     </footer>

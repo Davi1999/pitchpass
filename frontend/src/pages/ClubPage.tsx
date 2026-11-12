@@ -94,7 +94,7 @@ export function ClubPage() {
               )}
             </button>
             <Link className="btn btn--outline-light btn--sm" to="/find-your-club">
-              Find another
+              Find another club
             </Link>
           </div>
         </div>
@@ -117,13 +117,9 @@ export function ClubPage() {
       <div className="club-layout">
         <div className="club-main">
           <section className="panel">
-            <span className="eyebrow">The story</span>
-            <h2>What they are about</h2>
+            <span className="eyebrow">Profile</span>
+            <h2>About {club.name}</h2>
             <p>{club.description}</p>
-            <blockquote className="club-quote">
-              <span className="club-quote__mark">“</span>
-              {club.beginnerNote}
-            </blockquote>
             <div className="tag-row">
               {club.traits.map((trait) => (
                 <span className="tag tag--soft" key={trait}>
@@ -137,7 +133,6 @@ export function ClubPage() {
             <section className="fact-card">
               <span className="fact-card__label">Rivalry</span>
               <strong>{club.rivalry}</strong>
-              <p>Derby days are the ones circled on the calendar.</p>
             </section>
             <section className="fact-card">
               <span className="fact-card__label">Honours</span>
@@ -148,7 +143,7 @@ export function ClubPage() {
               </ul>
             </section>
             <section className="fact-card fact-card--accent">
-              <span className="fact-card__label">Fun fact</span>
+              <span className="fact-card__label">Fact</span>
               <p>{club.funFact}</p>
             </section>
           </div>
@@ -156,8 +151,8 @@ export function ClubPage() {
           <section className="club-fixtures">
             <div className="section-heading section-heading--small">
               <div className="section-heading__copy">
-                <span className="eyebrow">Around the club</span>
-                <h2>Recent and next up</h2>
+                <span className="eyebrow">Fixtures</span>
+                <h2>Results and fixtures</h2>
               </div>
               <Link className="text-link" to="/live">
                 Full matchday
@@ -200,8 +195,8 @@ export function ClubPage() {
           <section className="club-guides">
             <div className="section-heading section-heading--small">
               <div className="section-heading__copy">
-                <span className="eyebrow">Keep learning</span>
-                <h2>Useful for new supporters</h2>
+                <span className="eyebrow">Guides</span>
+                <h2>Related guides</h2>
               </div>
             </div>
             <div className="guide-grid guide-grid--two">
@@ -214,7 +209,7 @@ export function ClubPage() {
 
         <aside className="club-aside">
           <div className="aside-card">
-            <h3>Club DNA</h3>
+            <h3>Traits</h3>
             <div className="dna-list">
               {club.traits.map((trait) => (
                 <span key={trait}>{trait.replace('-', ' ')}</span>
@@ -243,10 +238,10 @@ export function ClubPage() {
             </dl>
           </div>
           <div className="aside-card aside-card--dark">
-            <span className="eyebrow eyebrow--light">Still shopping?</span>
-            <h3>Not quite your club?</h3>
+            <span className="eyebrow eyebrow--light">Club finder</span>
+            <h3>Find another club</h3>
             <Link className="btn btn--accent btn--sm" to="/find-your-club">
-              Take the club finder
+              Open club finder
             </Link>
           </div>
         </aside>

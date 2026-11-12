@@ -12,27 +12,49 @@ import { SectionHeading } from '../components/SectionHeading';
 import { StandingsTable } from '../components/StandingsTable';
 import { ErrorState, PageSkeleton } from '../components/States';
 import { useApi } from '../hooks/useApi';
+import { guideMedia } from '../lib/media';
+import type { MediaImage } from '../lib/media';
 import { getBestScore } from '../lib/progress';
+
+const homePhotos = [
+  {
+    title: 'Under the lights',
+    copy: 'A Premier League ground fills up before kick-off.',
+    image: guideMedia['premier-league-explained']?.banner
+  },
+  {
+    title: 'The crowd',
+    copy: 'Players and supporters share the big moments.',
+    image: guideMedia['matchday-basics']?.figures?.[0]?.image
+  },
+  {
+    title: 'Silverware',
+    copy: 'Cups add a different kind of drama to the season.',
+    image: guideMedia['cups-and-europe']?.figures?.[0]?.image
+  }
+].filter(
+  (photo): photo is { title: string; copy: string; image: MediaImage } => Boolean(photo.image)
+);
 
 const startHere = [
   {
     number: '01',
     title: 'Learn the league',
-    description: 'Twenty clubs, 38 matchdays and three points for a win. Start with the simple stuff.',
+    description: 'League format, points and the table.',
     to: '/learn/premier-league-explained',
     kind: 'learn' as const
   },
   {
     number: '02',
     title: 'Meet the clubs',
-    description: 'History, stadiums, rivalries and the vibe of every club in the league.',
+    description: 'History, stadiums and rivalries for all 20 clubs.',
     to: '/clubs',
     kind: 'clubs' as const
   },
   {
     number: '03',
     title: 'Find your club',
-    description: 'Five quick questions. Three suggestions. Absolutely no commitment.',
+    description: 'Answer five questions to get three suggested clubs.',
     to: '/find-your-club',
     kind: 'finder' as const
   }
@@ -67,16 +89,16 @@ export function HomePage() {
           <div className="hero__copy">
             <span className="eyebrow">
               <span className="eyebrow__dot" />
-              The Premier League, minus the confusion
+              Beginner’s guide to the Premier League
             </span>
             <h1>
-              Know the game.
+              Learn the league.
               <br />
               <span className="text-accent">Find your club.</span>
             </h1>
             <p className="hero__lede">
-              PitchPass is the beginner’s guide to English football. Learn the rules, meet
-              all 20 clubs, follow the matchday drama — and pick a team to call your own.
+              PitchPass explains the rules, all 20 clubs, fixtures, results and how to choose
+              a club to support.
             </p>
             <div className="hero__actions">
               <Link className="btn btn--primary" to="/learn">
@@ -110,8 +132,8 @@ export function HomePage() {
             ) : (
               <div className="hero__empty-board">
                 <span className="eyebrow">Live Hub</span>
-                <h2>The next matchday is coming.</h2>
-                <p>Check the fixture list and table while you wait.</p>
+                <h2>No live match</h2>
+                <p>See the fixture list and league table.</p>
                 <Link className="btn btn--accent btn--sm" to="/live">
                   Open Live Hub
                   <ArrowRight />
@@ -123,8 +145,8 @@ export function HomePage() {
                 <Flag />
               </span>
               <div>
-                <strong>Level = onside.</strong>
-                <span>The one rule everyone argues about.</span>
+                <strong>Level is onside.</strong>
+                <span>Offside rule</span>
               </div>
             </div>
             <div className="hero__floating hero__floating--season">
@@ -140,11 +162,7 @@ export function HomePage() {
 
       <section className="section section--tight">
         <div className="container">
-          <SectionHeading
-            eyebrow="Start here"
-            title="Three ways to get up to speed"
-            description="No prior knowledge needed. Pick a lane and go."
-          />
+          <SectionHeading eyebrow="Getting started" title="Start here" />
           <div className="path-grid">
             {startHere.map((item) => (
               <Link className="path-card" to={item.to} key={item.number}>
@@ -157,7 +175,7 @@ export function HomePage() {
                 <h3>{item.title}</h3>
                 <p>{item.description}</p>
                 <span className="path-card__cta">
-                  Let’s go
+                  Open
                   <ArrowRight />
                 </span>
               </Link>
@@ -166,12 +184,38 @@ export function HomePage() {
         </div>
       </section>
 
+      <section className="section section--tight">
+        <div className="container">
+          <SectionHeading
+            eyebrow="Matchday"
+            title="What it looks like"
+            description="A few scenes from a Premier League weekend."
+          />
+          <div className="photo-band">
+            {homePhotos.map((photo) => (
+              <figure className="photo-band__item" key={photo.image.src}>
+                <img
+                  src={photo.image.thumb ?? photo.image.src}
+                  alt={photo.image.alt}
+                  loading="lazy"
+                  decoding="async"
+                />
+                <figcaption>
+                  <strong>{photo.title}</strong>
+                  <span>{photo.copy}</span>
+                </figcaption>
+              </figure>
+            ))}
+          </div>
+        </div>
+      </section>
+
       <section className="section">
         <div className="container">
           <SectionHeading
-            eyebrow="The basics"
-            title="Football, in plain English"
-            description="Short guides for the rules, rituals and words you will hear every weekend."
+            eyebrow="Guides"
+            title="Premier League basics"
+            description="Short guides to the rules, league format and common terms."
             action={{ label: 'All guides', to: '/learn' }}
           />
           <div className="guide-grid guide-grid--four">
@@ -188,16 +232,13 @@ export function HomePage() {
             <div className="club-spotlight__copy">
               <span className="eyebrow eyebrow--light">
                 <span className="eyebrow__dot" />
-                Find your people
+                Club finder
               </span>
-              <h2>Twenty clubs. One will feel like yours.</h2>
-              <p>
-                Big trophies or a proper local ground? A wall of noise or a smart underdog
-                project? Answer five questions and we will narrow the field.
-              </p>
+              <h2>Find a club to support</h2>
+              <p>Answer five questions to get three suggested clubs.</p>
               <div className="club-spotlight__actions">
                 <Link className="btn btn--accent" to="/find-your-club">
-                  Take the club finder
+                  Open club finder
                   <ArrowRight />
                 </Link>
                 <Link className="btn btn--outline-light" to="/clubs">
@@ -225,10 +266,10 @@ export function HomePage() {
       <section className="section">
         <div className="container">
           <SectionHeading
-            eyebrow="The Live Hub"
-            title="This week in the league"
-            description={`Demo matchweek ${season.matchday} — the table, the fixtures and a simulated live game.`}
-            action={{ label: 'Open the Live Hub', to: '/live' }}
+            eyebrow="Live Hub"
+            title="Fixtures and table"
+            description={`Demo matchweek ${season.matchday}. Includes a simulated live match.`}
+            action={{ label: 'Open Live Hub', to: '/live' }}
           />
           <div className="matchday-grid">
             <div className="panel">
@@ -257,9 +298,9 @@ export function HomePage() {
       <section className="section">
         <div className="container">
           <SectionHeading
-            eyebrow="Good reads"
-            title="Fresh from the touchline"
-            description="Context for the conversations happening around you."
+            eyebrow="Articles"
+            title="Latest articles"
+            description="Short articles on rules, league format and football culture."
           />
           <div className="news-grid">
             {news.map((article) => (
@@ -275,26 +316,23 @@ export function HomePage() {
             <div className="quiz-banner__copy">
               <span className="eyebrow eyebrow--light">
                 <span className="eyebrow__dot" />
-                Five-minute warm-up
+                Quiz
               </span>
-              <h2>Think you know the offside rule?</h2>
-              <p>
-                Ten questions on the league, the rules and the culture. Instant feedback,
-                no judgment, bragging rights optional.
-              </p>
+              <h2>Premier League quiz</h2>
+              <p>Ten questions on the rules, league and culture, with explanations.</p>
               <Link className="btn btn--accent" to="/quiz">
-                Take the quiz
+                Start the quiz
                 <ArrowRight />
               </Link>
             </div>
             <div className="quiz-banner__score">
               <span className="quiz-banner__score-label">
-                {best ? 'Your best' : 'The challenge'}
+                {best ? 'Your best' : 'Questions'}
               </span>
               <strong>
                 {best ? `${best.score}/${best.total}` : '10'}
               </strong>
-              <span>{best ? 'questions correct' : 'questions · 5 minutes'}</span>
+              <span>{best ? 'questions correct' : 'about 5 minutes'}</span>
             </div>
           </div>
         </div>

@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react';
+import { Fragment, useEffect, useState } from 'react';
 import { Link, useParams } from 'react-router-dom';
 import { api } from '../api/client';
 import { Check, Clock } from '../components/Icons';
@@ -6,6 +6,7 @@ import { GuideIcon } from '../components/Glyphs';
 import { ErrorState, PageSkeleton } from '../components/States';
 import { useApi } from '../hooks/useApi';
 import { isGuideRead, toggleGuideRead } from '../lib/progress';
+import { guideMedia, guidePlayers } from '../lib/media';
 import { slugify } from '../lib/format';
 
 export function GuidePage() {
@@ -30,6 +31,7 @@ export function GuidePage() {
   }
 
   const guide = data.guide;
+  const media = guideMedia[guide.slug];
 
   function handleReadToggle() {
     if (!slug) return;
@@ -78,29 +80,100 @@ export function GuidePage() {
         </div>
       </header>
 
+      {media && (
+        <figure className="article-banner">
+          <img src={media.banner.src} alt={media.banner.alt} decoding="async" />
+          <figcaption>
+            <span>{media.banner.caption}</span>
+            <a href={media.banner.credit.source} target="_blank" rel="noreferrer">
+              Photo: {media.banner.credit.author} · {media.banner.credit.license}
+            </a>
+          </figcaption>
+        </figure>
+      )}
+
       <div className="article-layout">
         <article className="prose">
-          {guide.sections.map((section) => (
-            <section key={section.heading} id={slugify(section.heading)}>
-              <h2>{section.heading}</h2>
-              <p>{section.body}</p>
-              {section.bullets && (
-                <ul>
-                  {section.bullets.map((bullet) => (
-                    <li key={bullet}>{bullet}</li>
-                  ))}
-                </ul>
-              )}
+          {guide.sections.map((section, index) => {
+            const figures = media?.figures?.filter((figure) => figure.afterSection === index) ?? [];
+
+            return (
+              <Fragment key={section.heading}>
+                <section id={slugify(section.heading)}>
+                  <h2>{section.heading}</h2>
+                  <p>{section.body}</p>
+                  {section.bullets && (
+                    <ul>
+                      {section.bullets.map((bullet) => (
+                        <li key={bullet}>{bullet}</li>
+                      ))}
+                    </ul>
+                  )}
+                </section>
+
+                {figures.map(({ image }) => (
+                  <figure
+                    className={`article-figure${image.fit === 'contain' ? ' article-figure--contain' : ''}`}
+                    key={image.src}
+                  >
+                    <img src={image.src} alt={image.alt} loading="lazy" decoding="async" />
+                    <figcaption>
+                      <span>{image.caption}</span>
+                      <a href={image.credit.source} target="_blank" rel="noreferrer">
+                        Photo: {image.credit.author} · {image.credit.license}
+                      </a>
+                    </figcaption>
+                  </figure>
+                ))}
+              </Fragment>
+            );
+          })}
+
+          {guide.slug === 'players-to-know' && (
+            <section className="player-gallery-section">
+              <h2>Six players to watch</h2>
+              <p>
+                You do not need to know every squad. Start with a handful of players and follow
+                what they do during a match.
+              </p>
+              <div className="player-grid">
+                {guidePlayers.map((player) => (
+                  <figure className="player-card" key={player.name}>
+                    <div className="player-card__media">
+                      <img
+                        src={player.image.thumb ?? player.image.src}
+                        alt={player.image.alt}
+                        loading="lazy"
+                        decoding="async"
+                      />
+                    </div>
+                    <figcaption>
+                      <span className="player-card__role">
+                        {player.role} · {player.club}
+                      </span>
+                      <strong>{player.name}</strong>
+                      <p>{player.blurb}</p>
+                      <a
+                        className="player-card__credit"
+                        href={player.image.credit.source}
+                        target="_blank"
+                        rel="noreferrer"
+                      >
+                        Photo: {player.image.credit.author} · {player.image.credit.license}
+                      </a>
+                    </figcaption>
+                  </figure>
+                ))}
+              </div>
             </section>
-          ))}
+          )}
 
           <div className="article-end">
             <span className="article-end__check">
               <Check />
             </span>
             <div>
-              <h2>That is the guide.</h2>
-              <p>Next up: test yourself, or keep exploring the rest of the library.</p>
+              <h2>End of guide</h2>
             </div>
             <div className="article-end__actions">
               <Link className="btn btn--primary btn--sm" to="/quiz">
@@ -141,10 +214,10 @@ export function GuidePage() {
           </div>
 
           <div className="aside-card aside-card--dark">
-            <span className="eyebrow eyebrow--light">Not sure where to start?</span>
-            <h3>Find a club that fits you.</h3>
+            <span className="eyebrow eyebrow--light">Club finder</span>
+            <h3>Find a club to support</h3>
             <Link className="btn btn--accent btn--sm" to="/find-your-club">
-              Try the club finder
+              Open club finder
             </Link>
           </div>
         </aside>

@@ -28,7 +28,7 @@ export function useApi<T>(loader: () => Promise<T>, deps: unknown[]) {
         if (active) {
           setState({
             data: null,
-            error: error instanceof Error ? error.message : 'Something went wrong.',
+            error: error instanceof Error ? error.message : 'Could not load data.',
             loading: false
           });
         }
