@@ -45,7 +45,9 @@ test('health reports a seeded demo database', async () => {
   assert.equal(body.status, 'ok');
   assert.equal(body.demoData, true);
   assert.equal(body.clubs, 20);
-  assert.equal(body.guides, 12);
+  assert.equal(body.guides, 15);
+  assert.ok(body.eraProfiles >= 20);
+  assert.ok(body.eraStories >= 7);
 });
 
 test('club directory lists and searches all 20 clubs', async () => {
@@ -76,9 +78,10 @@ test('unknown club returns a JSON 404', async () => {
 
 test('guides expose categories and full content', async () => {
   const list = await api('/api/guides');
-  assert.equal(list.body.guides.length, 12);
+  assert.equal(list.body.guides.length, 15);
   assert.equal(list.body.guides[0].slug, 'premier-league-explained');
   assert.ok(list.body.categories.some((category) => category.name === 'Rules'));
+  assert.ok(list.body.categories.some((category) => category.name === 'Modern era'));
 
   const offside = await api('/api/guides/offside-explained');
   assert.equal(offside.response.status, 200);
@@ -191,6 +194,64 @@ test('home payload has everything the landing page needs', async () => {
   assert.equal(body.table.length, 5);
   assert.equal(body.news.length, 4);
   assert.equal(body.season.matchday, 13);
+});
+
+test('modern era overview aggregates players, managers, stories and seasons', async () => {
+  const { response, body } = await api('/api/era');
+  assert.equal(response.status, 200);
+  assert.match(body.meta.title, /Premier League/i);
+  assert.ok(body.players.length >= 10);
+  assert.ok(body.managers.length >= 8);
+  assert.ok(body.stories.length >= 6);
+  assert.equal(body.seasons.length, 4);
+  assert.equal(body.guides.length, 3);
+  assert.ok(body.players.every((player) => player.kind === 'player'));
+  assert.ok(body.managers.every((manager) => manager.kind === 'manager'));
+});
+
+test('era profile detail includes club context and related content', async () => {
+  const player = await api('/api/era/players/erling-haaland');
+  assert.equal(player.response.status, 200);
+  assert.equal(player.body.profile.name, 'Erling Haaland');
+  assert.equal(player.body.profile.club.name, 'Manchester City');
+  assert.ok(player.body.profile.sections.length >= 3);
+  assert.ok(player.body.profile.stats.length >= 3);
+  assert.ok(player.body.relatedProfiles.length > 0);
+  assert.ok(player.body.relatedStories.length > 0);
+  assert.equal(player.body.relatedGuide.slug, 'positions-explained');
+
+  const manager = await api('/api/era/managers/pep-guardiola');
+  assert.equal(manager.response.status, 200);
+  assert.equal(manager.body.profile.club.name, 'Manchester City');
+});
+
+test('era profile kind is enforced in detail routes', async () => {
+  const wrongKind = await api('/api/era/players/pep-guardiola');
+  assert.equal(wrongKind.response.status, 404);
+  const unknown = await api('/api/era/managers/not-a-manager');
+  assert.equal(unknown.response.status, 404);
+});
+
+test('era stories and seasons expose related profiles and clubs', async () => {
+  const story = await api('/api/era/stories/the-90-point-title-race');
+  assert.equal(story.response.status, 200);
+  assert.equal(story.body.story.title, 'Why 90 points is the new title benchmark');
+  assert.ok(story.body.story.sections.length >= 3);
+  assert.ok(story.body.story.takeaways.length >= 2);
+  assert.ok(story.body.relatedProfiles.length >= 3);
+
+  const season = await api('/api/era/seasons/2024-25');
+  assert.equal(season.response.status, 200);
+  assert.equal(season.body.season.champion, 'Liverpool');
+  assert.equal(season.body.season.championClub.name, 'Liverpool');
+  assert.equal(season.body.season.table[0].club.name, 'Liverpool');
+  assert.ok(season.body.relatedProfiles.length >= 3);
+});
+
+test('unknown era content returns a JSON 404', async () => {
+  const { response, body } = await api('/api/era/stories/not-a-story');
+  assert.equal(response.status, 404);
+  assert.match(body.error, /not found/i);
 });
 
 test('unknown API routes return JSON rather than the SPA', async () => {

@@ -9,9 +9,10 @@ import { quizQuestions } from '../data/quiz.js';
 import { matches } from '../data/matches.js';
 import { standings } from '../data/standings.js';
 import { news } from '../data/news.js';
+import { eraProfiles, eraSeasons, eraStories } from '../data/era.js';
 
 const backendRoot = fileURLToPath(new URL('../../', import.meta.url));
-const SEED_VERSION = '2026-11-13.2';
+const SEED_VERSION = '2026-11-14.1';
 const schemaPath = path.join(backendRoot, 'src/db/schema.sql');
 
 let db;
@@ -49,6 +50,9 @@ function migrate(database) {
 function runSeed(database) {
   database.exec('BEGIN');
   try {
+    database.exec('DELETE FROM era_seasons');
+    database.exec('DELETE FROM era_stories');
+    database.exec('DELETE FROM era_profiles');
     database.exec('DELETE FROM standings');
     database.exec('DELETE FROM matches');
     database.exec('DELETE FROM guides');
@@ -191,6 +195,98 @@ function runSeed(database) {
         article.readTime,
         article.emoji,
         article.relatedGuideSlug ?? null
+      );
+    }
+
+    const insertEraProfile = database.prepare(`
+      INSERT INTO era_profiles (
+        id, slug, kind, name, role, club_id, nationality, born, summary,
+        introduction, sections, strengths, stats, milestones, callout,
+        honours, related_slugs, related_guide_slug, sort_order, featured
+      ) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
+    `);
+
+    for (const profile of eraProfiles) {
+      insertEraProfile.run(
+        profile.id,
+        profile.slug,
+        profile.kind,
+        profile.name,
+        profile.role,
+        profile.clubId ?? null,
+        profile.nationality,
+        profile.born,
+        profile.summary,
+        profile.introduction,
+        JSON.stringify(profile.sections),
+        JSON.stringify(profile.strengths),
+        JSON.stringify(profile.stats),
+        JSON.stringify(profile.milestone),
+        JSON.stringify(profile.callout),
+        JSON.stringify(profile.honours),
+        JSON.stringify(profile.relatedSlugs),
+        profile.relatedGuideSlug ?? null,
+        profile.sortOrder ?? 0,
+        profile.featured ? 1 : 0
+      );
+    }
+
+    const insertEraStory = database.prepare(`
+      INSERT INTO era_stories (
+        id, slug, title, category, summary, read_time, published_at, featured,
+        sort_order, sections, takeaways, related_profile_slugs, related_guide_slug
+      ) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
+    `);
+
+    for (const story of eraStories) {
+      insertEraStory.run(
+        story.id,
+        story.slug,
+        story.title,
+        story.category,
+        story.summary,
+        story.readTime,
+        story.publishedAt,
+        story.featured ? 1 : 0,
+        story.sortOrder ?? 0,
+        JSON.stringify(story.sections),
+        JSON.stringify(story.takeaways),
+        JSON.stringify(story.relatedProfileSlugs),
+        story.relatedGuideSlug ?? null
+      );
+    }
+
+    const insertEraSeason = database.prepare(`
+      INSERT INTO era_seasons (
+        id, slug, label, status, champion, champion_club_id, runner_up,
+        runner_up_club_id, top_scorer, top_scorer_detail, points, summary,
+        featured, sort_order, sections, moments, table_rows, takeaways,
+        related_profile_slugs, related_guide_slug
+      ) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
+    `);
+
+    for (const season of eraSeasons) {
+      insertEraSeason.run(
+        season.id,
+        season.slug,
+        season.label,
+        season.status,
+        season.champion,
+        season.championClubId ?? null,
+        season.runnerUp,
+        season.runnerUpClubId ?? null,
+        season.topScorer,
+        season.topScorerDetail,
+        season.points,
+        season.summary,
+        season.featured ? 1 : 0,
+        season.sortOrder ?? 0,
+        JSON.stringify(season.sections),
+        JSON.stringify(season.moments),
+        JSON.stringify(season.table),
+        JSON.stringify(season.takeaways),
+        JSON.stringify(season.relatedProfileSlugs),
+        season.relatedGuideSlug ?? null
       );
     }
 

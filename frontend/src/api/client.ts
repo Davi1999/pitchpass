@@ -1,6 +1,13 @@
 import type {
   Club,
   ClubDetail,
+  EraOverview,
+  EraProfile,
+  EraProfileDetail,
+  EraSeason,
+  EraSeasonDetailResponse,
+  EraStory,
+  EraStoryDetail,
   FindQuestion,
   FindResponse,
   Guide,
@@ -90,6 +97,28 @@ export const api = {
 
   getNews: (limit?: number) =>
     request<{ news: NewsItem[] }>(`/api/news${queryString({ limit })}`),
+
+  getEra: () => request<EraOverview>('/api/era'),
+
+  getEraPlayers: () => request<{ players: EraProfile[] }>('/api/era/players'),
+
+  getEraPlayer: (slug: string) =>
+    request<EraProfileDetail>(`/api/era/players/${slug}`),
+
+  getEraManagers: () => request<{ managers: EraProfile[] }>('/api/era/managers'),
+
+  getEraManager: (slug: string) =>
+    request<EraProfileDetail>(`/api/era/managers/${slug}`),
+
+  getEraStories: () => request<{ stories: EraStory[] }>('/api/era/stories'),
+
+  getEraStory: (slug: string) =>
+    request<EraStoryDetail>(`/api/era/stories/${slug}`),
+
+  getEraSeasons: () => request<{ seasons: EraSeason[] }>('/api/era/seasons'),
+
+  getEraSeason: (slug: string) =>
+    request<EraSeasonDetailResponse>(`/api/era/seasons/${slug}`),
 
   getFindQuestions: () =>
     request<{ questions: FindQuestion[] }>('/api/clubs/find/questions'),

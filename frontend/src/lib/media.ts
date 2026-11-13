@@ -396,6 +396,49 @@ export const guideMedia: Record<string, GuideMedia> = {
           'https://commons.wikimedia.org/wiki/File:Liverpool_vs._Chelsea%2C_UEFA_Super_Cup_2019-08-14_30.jpg'
       }
     }
+  },
+  'modern-era-primer': {
+    banner: {
+      src: '/media/guides/guide-modern-era-banner.jpg',
+      thumb: '/media/guides/thumbs/guide-modern-era-banner.jpg',
+      alt: 'Manchester City and Burnley players line up before a Premier League match at the Etihad Stadium',
+      caption:
+        'The modern era: packed stands, tactical detail and a league that never stops moving.',
+      credit: {
+        author: 'Fra Casa',
+        license: 'CC0',
+        source: 'https://commons.wikimedia.org/wiki/File:Manchester_City_-_Burnley_31_Jan_2024.jpg'
+      }
+    }
+  },
+  'last-three-seasons': {
+    banner: {
+      src: '/media/guides/guide-recent-seasons-banner.jpg',
+      thumb: '/media/guides/thumbs/guide-recent-seasons-banner.jpg',
+      alt: 'The Premier League trophy on display in Singapore',
+      caption:
+        'Recent seasons have been defined by tight title races, deep squads and fine margins.',
+      credit: {
+        author: 'Pangalau',
+        license: 'CC BY-SA 4.0',
+        source:
+          'https://commons.wikimedia.org/wiki/File:Trophy_of_FA_Premier_League_in_Singapore,_2023.jpg'
+      }
+    }
+  },
+  'reading-a-season': {
+    banner: {
+      src: '/media/guides/guide-reading-season-banner.jpg',
+      thumb: '/media/guides/thumbs/guide-reading-season-banner.jpg',
+      alt: 'An aerial view of Anfield, home of Liverpool',
+      caption:
+        'A season is a long story: home form, away days, cup runs and the run-in all shape the table.',
+      credit: {
+        author: 'Arne Müseler',
+        license: 'CC BY-SA 3.0 DE',
+        source: 'https://commons.wikimedia.org/wiki/File:Liverpool_anfield_road_stadium.jpg'
+      }
+    }
   }
 };
 
@@ -509,6 +552,199 @@ export const guidePlayers: GuidePlayer[] = [
   }
 ];
 
+const playerPortraits: Record<string, MediaImage> = Object.fromEntries(
+  guidePlayers.map((player) => [
+    player.name
+      .toLowerCase()
+      .normalize('NFD')
+      .replace(/[\u0300-\u036f]/g, '')
+      .replace(/[^a-z0-9]+/g, '-')
+      .replace(/(^-|-$)/g, ''),
+    player.image
+  ])
+);
+
+/** Additional player portraits used by the modern-era profiles. */
+const extraPlayerPortraits: Record<string, MediaImage> = {
+  'declan-rice': {
+    src: '/media/players/declan-rice.jpg',
+    thumb: '/media/players/thumbs/declan-rice.jpg',
+    alt: 'Declan Rice in an England shirt',
+    caption: 'Declan Rice',
+    credit: {
+      author: 'Bryan Berlin',
+      license: 'CC BY-SA 4.0',
+      source:
+        'https://commons.wikimedia.org/wiki/File:Declan_Rice_England_v_Ghana_23_June_2026-150.jpg'
+    }
+  },
+  'alexander-isak': {
+    src: '/media/players/alexander-isak.jpg',
+    thumb: '/media/players/thumbs/alexander-isak.jpg',
+    alt: 'Alexander Isak in a Sweden shirt',
+    caption: 'Alexander Isak',
+    credit: {
+      author: 'Mikael Hervestad',
+      license: 'CC BY-SA 4.0',
+      source: 'https://commons.wikimedia.org/wiki/File:Alexander_Isak_-_Sweden_-_Greece21_(cropped).jpg'
+    }
+  },
+  'bruno-fernandes': {
+    src: '/media/players/bruno-fernandes.jpg',
+    thumb: '/media/players/thumbs/bruno-fernandes.jpg',
+    alt: 'Bruno Fernandes in a Portugal tracksuit',
+    caption: 'Bruno Fernandes',
+    credit: {
+      author: 'Bryan Berlin',
+      license: 'CC BY-SA 4.0',
+      source:
+        'https://commons.wikimedia.org/wiki/File:Bruno_Fernandes_USMNT_v_Portugal_Mar_31_2026-27_(cropped).jpg'
+    }
+  },
+  'alisson-becker': {
+    src: '/media/players/alisson-becker.jpg',
+    thumb: '/media/players/thumbs/alisson-becker.jpg',
+    alt: 'Alisson Becker in a Brazil goalkeeper shirt',
+    caption: 'Alisson Becker',
+    credit: {
+      author: 'Bryan Berlin',
+      license: 'CC BY-SA 4.0',
+      source:
+        'https://commons.wikimedia.org/wiki/File:Alisson_Becker_Brazil_V_Morocco_13_June_2026-117_(cropped).jpg'
+    }
+  },
+  'kevin-de-bruyne': {
+    src: '/media/players/kevin-de-bruyne.jpg',
+    thumb: '/media/players/thumbs/kevin-de-bruyne.jpg',
+    alt: 'Kevin De Bruyne in a Belgium tracksuit',
+    caption: 'Kevin De Bruyne',
+    credit: {
+      author: 'Bryan Berlin',
+      license: 'CC BY-SA 4.0',
+      source:
+        'https://commons.wikimedia.org/wiki/File:Kevin_De_Bruyne_USMNT_v_Belgium_Mar_28_2026-64_(cropped).jpg'
+    }
+  },
+  'anthony-gordon': {
+    src: '/media/players/anthony-gordon.jpg',
+    thumb: '/media/players/thumbs/anthony-gordon.jpg',
+    alt: 'Anthony Gordon in an England training bib',
+    caption: 'Anthony Gordon',
+    credit: {
+      author: 'Bryan Berlin',
+      license: 'CC BY-SA 4.0',
+      source:
+        'https://commons.wikimedia.org/wiki/File:Anthony_Gordon_England_v_Ghana_23_June_2026-017_(cropped).jpg'
+    }
+  }
+};
+
+/** Manager portraits used by the modern-era profiles. */
+export const managerPortraits: Record<string, MediaImage> = {
+  'mikel-arteta': {
+    src: '/media/players/arteta.jpg',
+    thumb: '/media/players/thumbs/arteta.jpg',
+    alt: 'Mikel Arteta on the touchline at a stadium',
+    caption: 'Mikel Arteta',
+    credit: {
+      author: 'Maryland GovPics',
+      license: 'CC BY 2.0',
+      source:
+        'https://commons.wikimedia.org/wiki/File:Arsenal_v_Everton_-_52223142689_(cropped).jpg'
+    }
+  },
+  'pep-guardiola': {
+    src: '/media/players/guardiola.jpg',
+    thumb: '/media/players/thumbs/guardiola.jpg',
+    alt: 'Pep Guardiola at a press conference',
+    caption: 'Pep Guardiola',
+    credit: {
+      author: 'Steffen Prößdorf',
+      license: 'CC BY-SA 4.0',
+      source:
+        'https://commons.wikimedia.org/wiki/File:Josep_Guardiola_2023-10-04_Fu%C3%9Fball,_M%C3%A4nner,_UEFA_Champions_League,_RB_Leipzig_-_Manchester_City_FC_1DX_2797_(cropped).jpg'
+    }
+  },
+  'arne-slot': {
+    src: '/media/players/slot.jpg',
+    thumb: '/media/players/thumbs/slot.jpg',
+    alt: 'Arne Slot being interviewed',
+    caption: 'Arne Slot',
+    credit: {
+      author: 'Carlo Bruil Fotografie',
+      license: 'CC BY 2.0',
+      source: 'https://commons.wikimedia.org/wiki/File:Arne_Slot_in_2024.jpg'
+    }
+  },
+  'enzo-maresca': {
+    src: '/media/players/maresca.jpg',
+    thumb: '/media/players/thumbs/maresca.jpg',
+    alt: 'Enzo Maresca on the touchline',
+    caption: 'Enzo Maresca',
+    credit: {
+      author: 'Oscar0123',
+      license: 'CC BY-SA 4.0',
+      source:
+        'https://commons.wikimedia.org/wiki/File:Enzo_maresca_chelsea_gent_2024_(extracted).jpg'
+    }
+  },
+  'eddie-howe': {
+    src: '/media/players/howe.jpg',
+    thumb: '/media/players/thumbs/howe.jpg',
+    alt: 'Eddie Howe outside a stadium',
+    caption: 'Eddie Howe',
+    credit: {
+      author: 'Timmy96',
+      license: 'CC0',
+      source: 'https://commons.wikimedia.org/wiki/File:Eddie_Howe_24052026_(1).jpg'
+    }
+  },
+  'unai-emery': {
+    src: '/media/players/emery.jpg',
+    thumb: '/media/players/thumbs/emery.jpg',
+    alt: 'Unai Emery in a suit',
+    caption: 'Unai Emery',
+    credit: {
+      author: 'Aleksandr Osipov',
+      license: 'CC BY-SA 2.0',
+      source: 'https://commons.wikimedia.org/wiki/File:Unai_Emery_-_Sevilla_(cropped).jpg'
+    }
+  },
+  'thomas-frank': {
+    src: '/media/players/frank.jpg',
+    thumb: '/media/players/thumbs/frank.jpg',
+    alt: 'Thomas Frank speaking at a press event',
+    caption: 'Thomas Frank',
+    credit: {
+      author: 'KICK-OFF (@KICK-OFF1) YouTube channel',
+      license: 'CC BY 3.0',
+      source: 'https://commons.wikimedia.org/wiki/File:Thomas_Frank_(cropped)_2.jpeg'
+    }
+  },
+  'ruben-amorim': {
+    src: '/media/players/amorim.png',
+    thumb: '/media/players/thumbs/amorim.png',
+    alt: 'Rúben Amorim at a press conference',
+    caption: 'Rúben Amorim',
+    credit: {
+      author: 'Agência LUSA',
+      license: 'CC BY 3.0',
+      source:
+        'https://commons.wikimedia.org/wiki/File:Ruben_Amorim,_January_2024_(cropped).png'
+    }
+  }
+};
+
+/**
+ * All modern-era profile portraits, keyed by profile slug. Profiles without a
+ * portrait fall back to a monogram in the UI.
+ */
+export const eraPortraits: Record<string, MediaImage> = {
+  ...playerPortraits,
+  ...extraPlayerPortraits,
+  ...managerPortraits
+};
+
 /** Deduplicated list of every photo used on the site, for the credits page. */
 export const photoCredits: MediaImage[] = (() => {
   const seen = new Set<string>();
@@ -527,6 +763,12 @@ export const photoCredits: MediaImage[] = (() => {
     if (seen.has(player.image.src)) continue;
     seen.add(player.image.src);
     images.push(player.image);
+  }
+
+  for (const portrait of Object.values(eraPortraits)) {
+    if (seen.has(portrait.src)) continue;
+    seen.add(portrait.src);
+    images.push(portrait);
   }
 
   return images;

@@ -1,12 +1,16 @@
 import { getDb } from './db/index.js';
 import {
   mapClub,
+  mapEraProfile,
+  mapEraSeason,
+  mapEraStory,
   mapGuide,
   mapGuideSummary,
   mapQuizQuestion,
   mapStanding,
   mapNews
 } from './db/mappers.js';
+import { eraMeta } from './data/era.js';
 import { getLiveMinute, isLiveDemoFinished } from './services/liveClock.js';
 
 const FEATURED_CLUB_IDS = [
@@ -237,10 +241,161 @@ export function getHomeData() {
   };
 }
 
+function eraProfileFromRow(row, teams) {
+  const profile = mapEraProfile(row);
+  if (!profile) return null;
+  return {
+    ...profile,
+    club: profile.clubId ? teams.get(profile.clubId) ?? null : null
+  };
+}
+
+function guideSummary(slug) {
+  const guide = slug ? getGuide(slug) : null;
+  if (!guide) return null;
+  const { sections, keyTerms, ...summary } = guide;
+  return summary;
+}
+
+export function listEraProfiles({ kind, featured } = {}) {
+  const teams = clubMap();
+  let rows = getDb().prepare('SELECT * FROM era_profiles ORDER BY sort_order ASC, name ASC').all();
+
+  if (kind) {
+    rows = rows.filter((row) => row.kind === kind);
+  }
+
+  if (featured !== undefined) {
+    rows = rows.filter((row) => Boolean(row.featured) === featured);
+  }
+
+  return rows.map((row) => eraProfileFromRow(row, teams));
+}
+
+export function getEraProfile(slug) {
+  const row = getDb().prepare('SELECT * FROM era_profiles WHERE slug = ?').get(slug);
+  if (!row) return null;
+
+  const teams = clubMap();
+  const profile = eraProfileFromRow(row, teams);
+  const allProfiles = listEraProfiles();
+
+  const relatedProfiles = (profile.relatedSlugs ?? [])
+    .map((relatedSlug) => allProfiles.find((item) => item.slug === relatedSlug))
+    .filter(Boolean);
+
+  const relatedStories = listEraStories().filter((story) =>
+    story.relatedProfileSlugs?.includes(slug)
+  );
+
+  return {
+    profile,
+    relatedProfiles,
+    relatedStories,
+    relatedGuide: guideSummary(profile.relatedGuideSlug)
+  };
+}
+
+export function listEraStories({ featured } = {}) {
+  let rows = getDb().prepare('SELECT * FROM era_stories ORDER BY sort_order ASC, published_at DESC').all();
+  if (featured !== undefined) {
+    rows = rows.filter((row) => Boolean(row.featured) === featured);
+  }
+  return rows.map(mapEraStory);
+}
+
+export function getEraStory(slug) {
+  const row = getDb().prepare('SELECT * FROM era_stories WHERE slug = ?').get(slug);
+  if (!row) return null;
+
+  const story = mapEraStory(row);
+  const allProfiles = listEraProfiles();
+  const relatedProfiles = (story.relatedProfileSlugs ?? [])
+    .map((profileSlug) => allProfiles.find((profile) => profile.slug === profileSlug))
+    .filter(Boolean);
+
+  return {
+    story,
+    relatedProfiles,
+    relatedGuide: guideSummary(story.relatedGuideSlug)
+  };
+}
+
+function eraSeasonFromRow(row, teams) {
+  const season = mapEraSeason(row);
+  if (!season) return null;
+  const table = (season.table ?? [])
+    .map((entry) => ({
+      ...entry,
+      club: teams.get(entry.clubId) ?? null
+    }))
+    .filter((entry) => entry.club);
+
+  return {
+    ...season,
+    table,
+    championClub: season.championClubId ? teams.get(season.championClubId) ?? null : null,
+    runnerUpClub: season.runnerUpClubId ? teams.get(season.runnerUpClubId) ?? null : null
+  };
+}
+
+export function listEraSeasons({ featured } = {}) {
+  const teams = clubMap();
+  let rows = getDb().prepare('SELECT * FROM era_seasons ORDER BY sort_order ASC').all();
+  if (featured !== undefined) {
+    rows = rows.filter((row) => Boolean(row.featured) === featured);
+  }
+  return rows.map((row) => {
+    const season = eraSeasonFromRow(row, teams);
+    if (!season) return null;
+    const { sections, moments, takeaways, relatedProfileSlugs, ...summary } = season;
+    return summary;
+  }).filter(Boolean);
+}
+
+export function getEraSeason(slug) {
+  const row = getDb().prepare('SELECT * FROM era_seasons WHERE slug = ?').get(slug);
+  if (!row) return null;
+
+  const teams = clubMap();
+  const season = eraSeasonFromRow(row, teams);
+  const allProfiles = listEraProfiles();
+  const relatedProfiles = (season.relatedProfileSlugs ?? [])
+    .map((profileSlug) => allProfiles.find((profile) => profile.slug === profileSlug))
+    .filter(Boolean);
+
+  return {
+    season,
+    relatedProfiles,
+    relatedGuide: guideSummary(season.relatedGuideSlug)
+  };
+}
+
+export function getEraOverview() {
+  const players = listEraProfiles({ kind: 'player' });
+  const managers = listEraProfiles({ kind: 'manager' });
+  const stories = listEraStories();
+  const seasons = listEraSeasons();
+  const guides = (eraMeta.guideSlugs ?? [])
+    .map((slug) => guideSummary(slug))
+    .filter(Boolean);
+
+  return {
+    meta: eraMeta,
+    players,
+    managers,
+    stories,
+    seasons,
+    guides
+  };
+}
+
 export function getHealth() {
   const db = getDb();
   const clubCount = db.prepare('SELECT COUNT(*) AS count FROM clubs').get().count;
   const guideCount = db.prepare('SELECT COUNT(*) AS count FROM guides').get().count;
+  const eraProfileCount = db.prepare('SELECT COUNT(*) AS count FROM era_profiles').get().count;
+  const eraStoryCount = db.prepare('SELECT COUNT(*) AS count FROM era_stories').get().count;
 
   return {
     status: 'ok',
@@ -248,6 +403,8 @@ export function getHealth() {
     demoData: true,
     clubs: clubCount,
     guides: guideCount,
+    eraProfiles: eraProfileCount,
+    eraStories: eraStoryCount,
     liveMinute: getLiveMinute(),
     time: new Date().toISOString()
   };

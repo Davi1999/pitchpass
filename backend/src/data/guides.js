@@ -730,5 +730,217 @@ export const guides = [
       { term: 'False nine', definition: 'A forward who drops into midfield to create space for others.' },
       { term: 'Pressing forward', definition: 'A forward who closes down defenders to win the ball high up the pitch.' }
     ]
+  },
+  {
+    id: 'guide-modern-era',
+    slug: 'modern-era-primer',
+    title: 'The modern era: what changed',
+    category: 'Modern era',
+    summary:
+      'A plain-English primer on the 2020s Premier League: pressing, squad depth, data, money rules and the ideas behind the football you watch now.',
+    readTime: 7,
+    difficulty: 'Starter',
+    emoji: '⚡',
+    sortOrder: 13,
+    featured: true,
+    sections: [
+      {
+        heading: 'The game got faster and more organised',
+        body:
+          'The modern Premier League is played at a higher tempo than the league of ten years ago. Teams press higher, pass faster and use the whole pitch. The best sides are not just fitter; they are more organised. Every player knows where to stand, when to run and who to cover for.',
+        bullets: [
+          'A high press tries to win the ball near the opponent’s goal.',
+          'Possession is used to move opponents out of shape, not just to keep the ball.',
+          'Teams rehearse set pieces and restarts as carefully as open-play moves.'
+        ]
+      },
+      {
+        heading: 'Squads matter more than starting XIs',
+        body:
+          'With five substitutions, European fixtures and a crowded calendar, the bench is now a tactical weapon. The champion is usually the team that can cope with injuries and rotate without dropping quality. A strong starting XI is not enough over 38 matches.',
+        bullets: [
+          'Managers plan substitutions before kick-off, not just when things go wrong.',
+          'Academy players and squad players are expected to fill specific roles.',
+          'The final 30 minutes of a match are often decided by who has better options on the bench.'
+        ]
+      },
+      {
+        heading: 'Data and set pieces',
+        body:
+          'Clubs use data to find undervalued players, analyse opponents and decide where to aim corners. Expected goals (xG) is now part of everyday commentary. Set-piece coaches have turned dead balls into a serious source of points. The modern game is a mix of instinct and information.',
+        bullets: [
+          'xG estimates the quality of a chance, not just the number of shots.',
+          'Set-piece routines can be worth several points over a season.',
+          'Recruitment teams look at age, contract length and resale value as well as ability.'
+        ]
+      },
+      {
+        heading: 'Money rules shape the table',
+        body:
+          'Profit and Sustainability Rules (PSR) limit how much clubs can lose over a rolling period. That makes academy sales and smart recruitment more important. A club can be wealthy and still need to balance the books. Transfer windows are a financial puzzle as well as a football decision.',
+        bullets: [
+          'Selling a homegrown player counts as pure profit in the accounts.',
+          'A big transfer fee is usually spread across the length of the contract.',
+          'Points deductions are a real consequence for clubs that breach the rules.'
+        ]
+      },
+      {
+        heading: 'How to watch the modern game',
+        body:
+          'Do not try to follow everything at once. Pick one team and watch its shape when it loses the ball. Then watch the first pass after a regain. Those two moments tell you more about a modern team than any highlight reel.',
+        bullets: [
+          'Watch the defensive line and the space behind it.',
+          'Notice which team wins the second balls in midfield.',
+          'Follow one player for 10 minutes to understand their role.'
+        ]
+      }
+    ],
+    keyTerms: [
+      { term: 'xG', definition: 'Expected goals: a model that estimates how likely a shot is to become a goal.' },
+      { term: 'PSR', definition: 'Profit and Sustainability Rules: the Premier League’s financial regulations.' },
+      { term: 'Inverted full-back', definition: 'A full-back who moves into midfield when their team has the ball.' },
+      { term: 'Set-piece coach', definition: 'A specialist coach who designs and drills corners, free kicks and throw-ins.' }
+    ]
+  },
+  {
+    id: 'guide-last-three-seasons',
+    slug: 'last-three-seasons',
+    title: 'The last three seasons, explained',
+    category: 'Modern era',
+    summary:
+      'What happened in 2022/23, 2023/24 and 2024/25 — the title races, the cup winners and the trends that carried into the current season.',
+    readTime: 6,
+    difficulty: 'Starter',
+    emoji: '🏆',
+    sortOrder: 14,
+    featured: true,
+    sections: [
+      {
+        heading: '2022/23: City’s treble',
+        body:
+          'Manchester City won the league, the FA Cup and the Champions League. Erling Haaland scored 36 league goals in his first season. Arsenal led for long spells before fading, but the season established them as a genuine title challenger.',
+        bullets: [
+          'City finished on 89 points.',
+          'Arsenal finished second on 84.',
+          'Rodri scored the winning goal in the Champions League final.'
+        ]
+      },
+      {
+        heading: '2023/24: four in a row',
+        body:
+          'City became the first club to win four consecutive Premier League titles. Arsenal pushed them to the final day and finished on 89 points. Liverpool were also in the race for much of the season before falling away. The margin at the top was tiny.',
+        bullets: [
+          'City finished on 91 points.',
+          'Arsenal finished second on 89.',
+          'City’s squad depth and experience proved decisive.'
+        ]
+      },
+      {
+        heading: '2024/25: Liverpool’s new era',
+        body:
+          'Arne Slot replaced Jürgen Klopp and won the title in his first season. Liverpool were consistent rather than spectacular, while City dropped to third. Mohamed Salah scored 29 league goals. The cup competitions produced a spread of winners, including Crystal Palace, Newcastle, Tottenham and Chelsea.',
+        bullets: [
+          'Liverpool won the league on 84 points.',
+          'Arsenal finished second on 74.',
+          'City finished third on 71.'
+        ]
+      },
+      {
+        heading: 'The trends that carried forward',
+        body:
+          'Three patterns stand out. First, the title benchmark stayed high. Second, squad depth became more important as the calendar grew. Third, set pieces and recruitment became central to how clubs compete. You can see all three in the current demo season.',
+        bullets: [
+          'The top clubs plan for 50+ matches, not just 38 league games.',
+          'Set-piece goals are treated as a reliable source of points.',
+          'Financial rules make academy players and smart sales more valuable.'
+        ]
+      },
+      {
+        heading: 'How to use this guide',
+        body:
+          'You do not need to remember every result. Learn the shape of each season: who won, who pushed them and what changed. That context makes current matches easier to follow, because you can see which stories are continuing and which are new.',
+        bullets: [
+          'Start with the champion and the closest challenger.',
+          'Notice which clubs changed manager or style.',
+          'Follow one or two storylines through the current season.'
+        ]
+      }
+    ],
+    keyTerms: [
+      { term: 'Treble', definition: 'Winning the league, the main domestic cup and the Champions League in the same season.' },
+      { term: 'Run-in', definition: 'The final weeks of the season, when the title, European places and relegation are decided.' },
+      { term: 'Squad depth', definition: 'The quality of players available beyond the first-choice starting XI.' }
+    ]
+  },
+  {
+    id: 'guide-reading-a-season',
+    slug: 'reading-a-season',
+    title: 'How to read a modern season',
+    category: 'Modern era',
+    summary:
+      'Fixture congestion, European places, the January window and the run-in: a newcomer’s map to the rhythms of a Premier League season.',
+    readTime: 6,
+    difficulty: 'Starter',
+    emoji: '📅',
+    sortOrder: 15,
+    featured: true,
+    sections: [
+      {
+        heading: 'The shape of a season',
+        body:
+          'A Premier League season runs from August to May. Each club plays 38 league matches, plus cup and European games. The calendar is crowded, especially in December and during European weeks. Managers spend as much time managing minutes as they do tactics.',
+        bullets: [
+          'August to December: the table starts to take shape.',
+          'January: the transfer window and a busy fixture list.',
+          'February to May: cup rounds, European knockouts and the run-in.'
+        ]
+      },
+      {
+        heading: 'The table has several races',
+        body:
+          'The title is only one story. The top four usually qualify for the Champions League, with other European places going to the FA Cup and EFL Cup winners and the league positions below. The bottom three are relegated. In a tight season, every position matters.',
+        bullets: [
+          'Top four: Champions League places, usually.',
+          'Fifth and cup winners: Europa League and Conference League routes.',
+          'Bottom three: relegated to the Championship.'
+        ]
+      },
+      {
+        heading: 'European football changes everything',
+        body:
+          'Clubs in Europe play midweek games in addition to the league. That means travel, rotation and less training time. A deep European run can lift a season or drain a squad. The best teams have enough depth to compete on both fronts.',
+        bullets: [
+          'Champions League clubs often have the deepest squads.',
+          'Thursday European games leave less recovery time before the weekend.',
+          'A European run can attract players and raise a club’s profile.'
+        ]
+      },
+      {
+        heading: 'The January window',
+        body:
+          'The January transfer window is a chance to fix a problem: an injury, a weakness in the squad or a title challenge that needs a boost. It is also a seller’s market, with prices often inflated. Smart clubs plan ahead rather than panic-buying.',
+        bullets: [
+          'Loan deals are common in January.',
+          'A new signing needs time to settle, so impact is not guaranteed.',
+          'Financial rules shape what clubs can do mid-season.'
+        ]
+      },
+      {
+        heading: 'The run-in',
+        body:
+          'The final 10 matches are where pressure becomes a real factor. Fixture difficulty, injuries and experience all matter. The team that handles the tension best usually wins the tightest races. For new fans, the run-in is the most exciting part of the season.',
+        bullets: [
+          'Watch the fixtures, not just the table.',
+          'A team with a difficult run-in can lose ground quickly.',
+          'Experience of previous title races can help in the final weeks.'
+        ]
+      }
+    ],
+    keyTerms: [
+      { term: 'Fixture congestion', definition: 'A period with many matches in a short space of time.' },
+      { term: 'Run-in', definition: 'The final stretch of the season when the table is decided.' },
+      { term: 'European places', definition: 'League positions and cup wins that qualify a club for UEFA competitions.' },
+      { term: 'January window', definition: 'The mid-season transfer window, usually open for most of January.' }
+    ]
   }
 ];

@@ -5,6 +5,7 @@ import { Logo } from './Logo';
 
 const navItems = [
   { label: 'Learn', to: '/learn' },
+  { label: 'Modern era', to: '/era' },
   { label: 'Clubs', to: '/clubs' },
   { label: 'Live', to: '/live' },
   { label: 'Quiz', to: '/quiz' }
@@ -99,6 +100,9 @@ function Footer() {
           <div>
             <h3>Explore</h3>
             <Link to="/learn">Guides</Link>
+            <Link to="/era">Modern era</Link>
+            <Link to="/era/players">Player profiles</Link>
+            <Link to="/era/managers">Managers</Link>
             <Link to="/clubs">Club directory</Link>
             <Link to="/live">Live Hub</Link>
             <Link to="/quiz">Quiz</Link>
@@ -106,7 +110,8 @@ function Footer() {
           <div>
             <h3>Start here</h3>
             <Link to="/learn/premier-league-explained">League format</Link>
-            <Link to="/learn/offside-explained">Offside rule</Link>
+            <Link to="/learn/modern-era-primer">Modern era primer</Link>
+            <Link to="/era/seasons">Recent seasons</Link>
             <Link to="/find-your-club">Find your club</Link>
             <Link to="/credits">Photo credits</Link>
             <a href="/api/health" target="_blank" rel="noreferrer">

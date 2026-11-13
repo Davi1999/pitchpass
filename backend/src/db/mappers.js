@@ -104,3 +104,74 @@ export function mapNews(row) {
     relatedGuideSlug: row.related_guide_slug
   };
 }
+
+export function mapEraProfile(row) {
+  if (!row) return null;
+  return {
+    id: row.id,
+    slug: row.slug,
+    kind: row.kind,
+    name: row.name,
+    role: row.role,
+    clubId: row.club_id,
+    nationality: row.nationality,
+    born: row.born,
+    summary: row.summary,
+    introduction: row.introduction,
+    sections: parseJson(row.sections, []),
+    strengths: parseJson(row.strengths, []),
+    stats: parseJson(row.stats, []),
+    milestones: parseJson(row.milestones, []),
+    callout: parseJson(row.callout, null),
+    honours: parseJson(row.honours, []),
+    relatedSlugs: parseJson(row.related_slugs, []),
+    relatedGuideSlug: row.related_guide_slug,
+    sortOrder: row.sort_order,
+    featured: Boolean(row.featured)
+  };
+}
+
+export function mapEraStory(row) {
+  if (!row) return null;
+  return {
+    id: row.id,
+    slug: row.slug,
+    title: row.title,
+    category: row.category,
+    summary: row.summary,
+    readTime: row.read_time,
+    publishedAt: row.published_at,
+    featured: Boolean(row.featured),
+    sortOrder: row.sort_order,
+    sections: parseJson(row.sections, []),
+    takeaways: parseJson(row.takeaways, []),
+    relatedProfileSlugs: parseJson(row.related_profile_slugs, []),
+    relatedGuideSlug: row.related_guide_slug
+  };
+}
+
+export function mapEraSeason(row) {
+  if (!row) return null;
+  return {
+    id: row.id,
+    slug: row.slug,
+    label: row.label,
+    status: row.status,
+    champion: row.champion,
+    championClubId: row.champion_club_id,
+    runnerUp: row.runner_up,
+    runnerUpClubId: row.runner_up_club_id,
+    topScorer: row.top_scorer,
+    topScorerDetail: row.top_scorer_detail,
+    points: row.points,
+    summary: row.summary,
+    featured: Boolean(row.featured),
+    sortOrder: row.sort_order,
+    sections: parseJson(row.sections, []),
+    moments: parseJson(row.moments, []),
+    table: parseJson(row.table_rows, []),
+    takeaways: parseJson(row.takeaways, []),
+    relatedProfileSlugs: parseJson(row.related_profile_slugs, []),
+    relatedGuideSlug: row.related_guide_slug
+  };
+}

@@ -14,6 +14,7 @@ import {
   Monitor,
   Question,
   Shield,
+  Spark,
   Trophy
 } from './Icons';
 
@@ -31,7 +32,10 @@ const guideIcons: Record<string, Icon> = {
   'how-to-pick-a-club': Heart,
   'derbies-and-rivalries': Flame,
   'football-glossary': Chat,
-  'players-to-know': Ball
+  'players-to-know': Ball,
+  'modern-era-primer': Spark,
+  'last-three-seasons': Trophy,
+  'reading-a-season': Compass
 };
 
 const newsIcons: Record<string, Icon> = {

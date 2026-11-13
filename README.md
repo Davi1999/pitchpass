@@ -9,7 +9,9 @@ This repository is an early working prototype: a React single-page app, an Expre
 ## What is in the prototype
 
 - **Home dashboard** — a guided first visit, featured guides, a live match card, upcoming fixtures, a table snapshot and club-finder call to action.
-- **Learn library** — 12 plain-English guides covering the league format, offside, VAR, cards, matchday basics, transfers, positions, cups, rivalries, the football glossary and a player primer.
+- **Learn library** — 15 plain-English guides covering the league format, offside, VAR, cards, matchday basics, transfers, positions, cups, rivalries, the football glossary, a player primer and three modern-era guides.
+- **Modern era hub** — a dedicated section on the current era of the Premier League (2022/23 to the 2025/26 demo season) with 12 player profiles, 8 manager profiles, 7 explainer stories, 4 season recaps, an era timeline and links into the rest of the site.
+- **Profile reader** — player and manager pages with portraits or monograms, key stats, career milestones, honours, a plain-English guide to what to watch and related stories and guides.
 - **Guide reader** — long-form article layout with photo banners, inline figures and captions, key terms, an in-page table of contents, reading progress and a "mark as read" state saved in `localStorage`.
 - **Club directory** — all 20 clubs with official club badges, search, club DNA and a detailed club page with history, honours, rivalry, fixtures and related guides.
 - **Club finder** — a five-question matching flow that scores all 20 clubs and returns a top three with reasons. You can save a club as "my club" locally.
@@ -66,7 +68,7 @@ The Express server serves the built frontend at **http://localhost:4000** when `
 pitchpass/
 ├── backend/
 │   ├── src/
-│   │   ├── data/            # Clubs, guides, quiz, fixtures, table, news
+│   │   ├── data/            # Clubs, guides, quiz, fixtures, table, news, era content
 │   │   ├── db/              # SQLite setup, schema, seed, row mappers
 │   │   ├── routes/          # Express route modules
 │   │   ├── services/        # Club finder scoring + demo live clock
@@ -81,7 +83,7 @@ pitchpass/
 │       ├── components/      # Layout, cards, crests, tables, states
 │       ├── hooks/           # useApi data-loading hook
 │       ├── lib/             # Formatting, media map, localStorage helpers
-│       ├── pages/           # Home, Learn, Clubs, Live, Quiz, Finder, Credits
+│       ├── pages/           # Home, Learn, Modern era, Clubs, Live, Quiz, Finder, Credits
 │       ├── styles/          # Design tokens + all component styles
 │       ├── types.ts         # Shared API response types
 │       └── App.tsx          # Routes
@@ -103,6 +105,11 @@ All endpoints are under `/api`.
 | `POST` | `/api/clubs/find` | Rank clubs from `{ answers: { mood, place, story, football, values } }`. |
 | `GET` | `/api/guides?category=&search=` | Guide summaries and category counts. |
 | `GET` | `/api/guides/:slug` | Full guide content. |
+| `GET` | `/api/era` | Modern-era hub: meta, players, managers, stories, seasons and guides. |
+| `GET` | `/api/era/players` · `/api/era/managers` | Profile lists for the modern era. |
+| `GET` | `/api/era/players/:slug` · `/api/era/managers/:slug` | Profile detail with club context, related profiles, stories and guide. |
+| `GET` | `/api/era/stories` · `/api/era/stories/:slug` | Era story list and full story. |
+| `GET` | `/api/era/seasons` · `/api/era/seasons/:slug` | Season recap list and detail with table and related profiles. |
 | `GET` | `/api/quiz?limit=10` | Quiz questions **without** answers. |
 | `POST` | `/api/quiz/check` | Check one answer with `{ questionId, answerIndex }`. |
 | `GET` | `/api/matches?status=&team=&limit=` | Fixtures/results, including the simulated live fixture. |
@@ -141,6 +148,8 @@ CORS_ORIGIN=http://localhost:5173
 - `npm run seed` forces a reset of all demo content.
 - User state (guides read, quiz best, saved club) lives only in the browser's `localStorage` for now.
 - The club-finder weights live in `backend/src/data/discovery.js`; club traits live in `backend/src/data/clubs.js`.
+- Modern-era profiles, stories, season recaps and the era timeline live in `backend/src/data/era.js`. The 2025/26 season is demo data.
+- Profile portraits reuse the licensed images in `frontend/public/media/players/`; profiles without a portrait use a club-coloured monogram.
 
 ## Next steps
 
@@ -160,13 +169,13 @@ The prototype is intentionally shaped for iteration. Useful next moves:
 npm test
 ```
 
-The API test suite covers health, clubs, search, club detail, guides, quiz answer secrecy and validation, club-finder ranking, standings, fixtures and the home payload.
+The API test suite covers health, clubs, search, club detail, guides, quiz answer secrecy and validation, club-finder ranking, standings, fixtures, the home payload and the modern-era overview, profiles, stories and seasons.
 
 ## Media and licensing
 
 - **Club badges** are the official crests of their respective clubs. They are included for identification in this non-commercial, educational prototype and remain the property of their clubs. They are not licensed for reuse. If you plan to publish PitchPass commercially, replace them with licensed assets or obtain permission.
 - **Photographs and diagrams** are from Wikimedia Commons. Each item is credited on the `/credits` page in the app and under the relevant image, with the author, licence and a link to the source. Most are CC BY, CC BY-SA, CC0 or public domain. Resized or cropped versions are used for layout.
-- **Player portraits** are used to illustrate the "Players to know" guide. They are not endorsements by the players.
+- **Player and manager portraits** are used to illustrate the "Players to know" guide and the modern-era profiles. They are not endorsements by the players, managers or clubs. Profiles without a photograph fall back to a club-coloured monogram.
 
 The media registry lives in `frontend/src/lib/media.ts`; image files live under `frontend/public/media/`.
 

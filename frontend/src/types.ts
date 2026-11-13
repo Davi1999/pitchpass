@@ -167,3 +167,142 @@ export interface FindResponse {
   results: FindResult[];
   alternatives: FindResult[];
 }
+
+export type EraProfileKind = 'player' | 'manager';
+
+export interface EraStat {
+  label: string;
+  value: string;
+}
+
+export interface EraMilestone {
+  year: string;
+  event: string;
+}
+
+export interface EraCallout {
+  label: string;
+  text: string;
+}
+
+export interface EraProfile {
+  id: string;
+  slug: string;
+  kind: EraProfileKind;
+  name: string;
+  role: string;
+  clubId: string | null;
+  club: Club | null;
+  nationality: string;
+  born: string;
+  summary: string;
+  introduction: string;
+  sections: GuideSection[];
+  strengths: string[];
+  stats: EraStat[];
+  milestones: EraMilestone[];
+  callout: EraCallout | null;
+  honours: string[];
+  relatedSlugs: string[];
+  relatedGuideSlug: string | null;
+  sortOrder: number;
+  featured: boolean;
+}
+
+export interface EraStory {
+  id: string;
+  slug: string;
+  title: string;
+  category: string;
+  summary: string;
+  readTime: number;
+  publishedAt: string;
+  featured: boolean;
+  sortOrder: number;
+  sections: GuideSection[];
+  takeaways: string[];
+  relatedProfileSlugs: string[];
+  relatedGuideSlug: string | null;
+}
+
+export interface EraSeasonTableRow {
+  position: number;
+  clubId: string;
+  points: number;
+  club: Club;
+}
+
+export interface EraSeason {
+  id: string;
+  slug: string;
+  label: string;
+  status: string;
+  champion: string;
+  championClubId: string | null;
+  championClub: Club | null;
+  runnerUp: string;
+  runnerUpClubId: string | null;
+  runnerUpClub: Club | null;
+  topScorer: string;
+  topScorerDetail: string;
+  points: number;
+  summary: string;
+  featured: boolean;
+  sortOrder: number;
+  table: EraSeasonTableRow[];
+}
+
+export interface EraSeasonDetail extends EraSeason {
+  sections: GuideSection[];
+  moments: { label: string; text: string }[];
+  takeaways: string[];
+  relatedProfileSlugs: string[];
+  relatedGuideSlug: string | null;
+}
+
+export interface EraTimelineEntry {
+  year: string;
+  title: string;
+  body: string;
+}
+
+export interface EraMeta {
+  label: string;
+  title: string;
+  seasons: string;
+  updated: string;
+  description: string;
+  introduction: string;
+  disclaimer: string;
+  stats: EraStat[];
+  timeline: EraTimelineEntry[];
+  guideSlugs: string[];
+}
+
+export interface EraOverview {
+  meta: EraMeta;
+  players: EraProfile[];
+  managers: EraProfile[];
+  stories: EraStory[];
+  seasons: EraSeason[];
+  guides: GuideSummary[];
+}
+
+export interface EraProfileDetail {
+  profile: EraProfile;
+  relatedProfiles: EraProfile[];
+  relatedStories: EraStory[];
+  relatedGuide: GuideSummary | null;
+}
+
+export interface EraStoryDetail {
+  story: EraStory;
+  relatedProfiles: EraProfile[];
+  relatedGuide: GuideSummary | null;
+}
+
+export interface EraSeasonDetailResponse {
+  season: EraSeasonDetail;
+  relatedProfiles: EraProfile[];
+  relatedGuide: GuideSummary | null;
+}

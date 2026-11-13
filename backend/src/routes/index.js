@@ -1,6 +1,7 @@
 import { Router } from 'express';
 import { getHealth, getHomeData } from '../repositories.js';
 import { clubsRouter } from './clubs.js';
+import { eraRouter } from './era.js';
 import { guidesRouter } from './guides.js';
 import { matchesRouter, standingsRouter } from './matches.js';
 import { newsRouter } from './news.js';
@@ -18,6 +19,7 @@ apiRouter.get('/home', (req, res) => {
 });
 
 apiRouter.use('/clubs', clubsRouter);
+apiRouter.use('/era', eraRouter);
 apiRouter.use('/guides', guidesRouter);
 apiRouter.use('/quiz', quizRouter);
 apiRouter.use('/matches', matchesRouter);

@@ -90,3 +90,67 @@ CREATE TABLE IF NOT EXISTS news (
   emoji TEXT NOT NULL,
   related_guide_slug TEXT
 );
+
+CREATE TABLE IF NOT EXISTS era_profiles (
+  id TEXT PRIMARY KEY,
+  slug TEXT NOT NULL UNIQUE,
+  kind TEXT NOT NULL,
+  name TEXT NOT NULL,
+  role TEXT NOT NULL,
+  club_id TEXT REFERENCES clubs(id),
+  nationality TEXT NOT NULL,
+  born TEXT NOT NULL,
+  summary TEXT NOT NULL,
+  introduction TEXT NOT NULL,
+  sections TEXT NOT NULL,
+  strengths TEXT NOT NULL,
+  stats TEXT NOT NULL,
+  milestones TEXT NOT NULL,
+  callout TEXT NOT NULL,
+  honours TEXT NOT NULL,
+  related_slugs TEXT NOT NULL,
+  related_guide_slug TEXT,
+  sort_order INTEGER NOT NULL DEFAULT 0,
+  featured INTEGER NOT NULL DEFAULT 0
+);
+
+CREATE INDEX IF NOT EXISTS idx_era_profiles_kind ON era_profiles(kind);
+
+CREATE TABLE IF NOT EXISTS era_stories (
+  id TEXT PRIMARY KEY,
+  slug TEXT NOT NULL UNIQUE,
+  title TEXT NOT NULL,
+  category TEXT NOT NULL,
+  summary TEXT NOT NULL,
+  read_time INTEGER NOT NULL,
+  published_at TEXT NOT NULL,
+  featured INTEGER NOT NULL DEFAULT 0,
+  sort_order INTEGER NOT NULL DEFAULT 0,
+  sections TEXT NOT NULL,
+  takeaways TEXT NOT NULL,
+  related_profile_slugs TEXT NOT NULL,
+  related_guide_slug TEXT
+);
+
+CREATE TABLE IF NOT EXISTS era_seasons (
+  id TEXT PRIMARY KEY,
+  slug TEXT NOT NULL UNIQUE,
+  label TEXT NOT NULL,
+  status TEXT NOT NULL,
+  champion TEXT NOT NULL,
+  champion_club_id TEXT REFERENCES clubs(id),
+  runner_up TEXT NOT NULL,
+  runner_up_club_id TEXT REFERENCES clubs(id),
+  top_scorer TEXT NOT NULL,
+  top_scorer_detail TEXT NOT NULL,
+  points INTEGER NOT NULL,
+  summary TEXT NOT NULL,
+  featured INTEGER NOT NULL DEFAULT 0,
+  sort_order INTEGER NOT NULL DEFAULT 0,
+  sections TEXT NOT NULL,
+  moments TEXT NOT NULL,
+  table_rows TEXT NOT NULL,
+  takeaways TEXT NOT NULL,
+  related_profile_slugs TEXT NOT NULL,
+  related_guide_slug TEXT
+);

@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 import { api } from '../api/client';
 import { ClubCrest } from '../components/ClubCrest';
 import { GuideCard } from '../components/GuideCard';
-import { ArrowRight, Flag } from '../components/Icons';
+import { ArrowRight, Ball, BookOpen, Flag, Shield, Trophy } from '../components/Icons';
 import { PathIcon } from '../components/Glyphs';
 import { LiveBoard } from '../components/LiveBoard';
 import { MatchCard } from '../components/MatchCard';
@@ -222,6 +222,62 @@ export function HomePage() {
             {featuredGuides.slice(0, 4).map((guide, index) => (
               <GuideCard guide={guide} index={index} key={guide.slug} />
             ))}
+          </div>
+        </div>
+      </section>
+
+      <section className="section section--tight">
+        <div className="container">
+          <div className="era-home">
+            <div className="era-home__copy">
+              <span className="eyebrow eyebrow--light">
+                <span className="eyebrow__dot" />
+                The modern era
+              </span>
+              <h2>The league you are watching now</h2>
+              <p>
+                Profiles of the players and managers who define the 2020s, the stories behind the
+                title races and plain-English guides to the last few seasons.
+              </p>
+              <Link className="btn btn--accent" to="/era">
+                Explore the modern era
+                <ArrowRight />
+              </Link>
+            </div>
+            <div className="era-home__links">
+              <Link to="/era/players">
+                <span className="era-home__icon"><Ball /></span>
+                <div>
+                  <strong>Player profiles</strong>
+                  <span>Haaland, Salah, Saka and more</span>
+                </div>
+                <ArrowRight />
+              </Link>
+              <Link to="/era/managers">
+                <span className="era-home__icon"><Shield /></span>
+                <div>
+                  <strong>Managers</strong>
+                  <span>Arteta, Guardiola, Slot and more</span>
+                </div>
+                <ArrowRight />
+              </Link>
+              <Link to="/era/stories">
+                <span className="era-home__icon"><BookOpen /></span>
+                <div>
+                  <strong>Stories</strong>
+                  <span>Tactics, money and title races</span>
+                </div>
+                <ArrowRight />
+              </Link>
+              <Link to="/era/seasons">
+                <span className="era-home__icon"><Trophy /></span>
+                <div>
+                  <strong>Recent seasons</strong>
+                  <span>2022/23 to the current campaign</span>
+                </div>
+                <ArrowRight />
+              </Link>
+            </div>
           </div>
         </div>
       </section>

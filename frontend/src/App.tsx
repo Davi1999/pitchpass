@@ -10,6 +10,13 @@ import { QuizPage } from './pages/QuizPage';
 import { FindClubPage } from './pages/FindClubPage';
 import { CreditsPage } from './pages/CreditsPage';
 import { NotFoundPage } from './pages/NotFoundPage';
+import { EraPage } from './pages/EraPage';
+import { EraProfilesPage } from './pages/EraProfilesPage';
+import { EraProfilePage } from './pages/EraProfilePage';
+import { EraStoriesPage } from './pages/EraStoriesPage';
+import { EraStoryPage } from './pages/EraStoryPage';
+import { EraSeasonsPage } from './pages/EraSeasonsPage';
+import { EraSeasonPage } from './pages/EraSeasonPage';
 
 export default function App() {
   return (
@@ -21,6 +28,15 @@ export default function App() {
           <Route path="learn/:slug" element={<GuidePage />} />
           <Route path="clubs" element={<ClubsPage />} />
           <Route path="clubs/:id" element={<ClubPage />} />
+          <Route path="era" element={<EraPage />} />
+          <Route path="era/players" element={<EraProfilesPage kind="player" />} />
+          <Route path="era/players/:slug" element={<EraProfilePage kind="player" />} />
+          <Route path="era/managers" element={<EraProfilesPage kind="manager" />} />
+          <Route path="era/managers/:slug" element={<EraProfilePage kind="manager" />} />
+          <Route path="era/stories" element={<EraStoriesPage />} />
+          <Route path="era/stories/:slug" element={<EraStoryPage />} />
+          <Route path="era/seasons" element={<EraSeasonsPage />} />
+          <Route path="era/seasons/:slug" element={<EraSeasonPage />} />
           <Route path="live" element={<LivePage />} />
           <Route path="quiz" element={<QuizPage />} />
           <Route path="find-your-club" element={<FindClubPage />} />
